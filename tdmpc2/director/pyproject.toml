@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "director"
+version = "0.1.0"
+description = ""
+authors = ["Aleksi Tella <aleksi.tella@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+dreamerv2 = {git = "https://github.com/RajGhugare19/dreamerv2.git"}
+hydra-core = "1.2.0"
+gym = "0.19.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.10.0"
+pytest = "^6.2.5"
+flake8 = "^5.0.4"
+
+[tool.black]
+skip-string-normalization = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,4 +1,4 @@
---editable tdmpc2
+--editable moore-tdmpc
 torch==2.3.1
 torchaudio==2.3.1
 torchrl==0.4.0

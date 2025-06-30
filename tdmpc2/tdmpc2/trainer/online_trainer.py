@@ -129,4 +129,4 @@ class OnlineTrainer(Trainer):
 
             self._step += 1
 
-        self.logger.finish(self.agent)
+        self.logger.finish(self.agent) 

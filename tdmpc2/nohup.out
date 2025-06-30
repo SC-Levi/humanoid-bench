@@ -1,0 +1,1348 @@
+wandb: Currently logged in as: levi1024 (OA-MBRL). Use `wandb login --relogin` to force relogin
+wandb: - Waiting for wandb.init()...wandb: \ Waiting for wandb.init()...wandb: | Waiting for wandb.init()...wandb: / Waiting for wandb.init()...wandb: wandb version 0.20.1 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.17.3
+wandb: Run data is saved locally in /home/bit/Desktop/humanoid-bench/tdmpc2/logs/humanoid_h1hand-truck-v0/0/default/wandb/run-20250627_113202-aezh152v
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run humanoid_h1hand-truck-v0.tdmpc.default.0
+wandb: ⭐️ View project at https://wandb.ai/OA-MBRL/moore-tdmpc
+wandb: 🚀 View run at https://wandb.ai/OA-MBRL/moore-tdmpc/runs/aezh152v
+wandb: Network error (SSLError), entering retry loop.
+Work dir: /home/bit/Desktop/humanoid-bench/tdmpc2/logs/humanoid_h1hand-truck-v0/0/default
+Using DirectorTrainer for hierarchical control
+small obs start: None
+Episode length: 1000
+Discount factor: 0.995
+-------------------------------------------------
+  Task:           Humanoid_H1Hand Truck V0
+  Steps:          3,000,000
+  Observations:   [216]
+  Actions:        61
+  Experiment:     default
+-------------------------------------------------
+Logs will be synced with wandb.
+Architecture: WorldModel(
+  (_encoder): ModuleDict(
+    (state): Sequential(
+      (0): NormedLinear(in_features=216, out_features=256, bias=True, act=Mish)
+      (1): NormedLinear(in_features=256, out_features=512, bias=True, act=SimNorm)
+    )
+  )
+  (_dynamics): MoEBlock(
+    (gate): Linear(in_features=574, out_features=4, bias=False)
+    (unit_model): Sequential(
+      (0): NormedLinear(in_features=573, out_features=512, bias=True, act=Mish)
+      (1): NormedLinear(in_features=512, out_features=512, bias=True, act=Mish)
+    )
+    (trunk): Sequential(
+      (0): InputLayer()
+      (1): ParallelLayer(
+        (model_layers): ModuleList(
+          (0-3): 4 x Sequential(
+            (0): NormedLinear(in_features=573, out_features=512, bias=True, act=Mish)
+            (1): NormedLinear(in_features=512, out_features=512, bias=True, act=Mish)
+          )
+        )
+      )
+      (2): OrthogonalLayer1D()
+    )
+    (head): NormedLinear(in_features=512, out_features=512, bias=True, act=SimNorm)
+  )
+  (_reward): MoEBlock(
+    (gate): Linear(in_features=574, out_features=4, bias=False)
+    (unit_model): Sequential(
+      (0): NormedLinear(in_features=573, out_features=512, bias=True, act=Mish)
+      (1): NormedLinear(in_features=512, out_features=512, bias=True, act=Mish)
+    )
+    (trunk): Sequential(
+      (0): InputLayer()
+      (1): ParallelLayer(
+        (model_layers): ModuleList(
+          (0-3): 4 x Sequential(
+            (0): NormedLinear(in_features=573, out_features=512, bias=True, act=Mish)
+            (1): NormedLinear(in_features=512, out_features=512, bias=True, act=Mish)
+          )
+        )
+      )
+      (2): OrthogonalLayer1D()
+    )
+    (head): NormedLinear(in_features=512, out_features=101, bias=True, act=Mish)
+  )
+  (_pi): Sequential(
+    (0): NormedLinear(in_features=512, out_features=512, bias=True, act=Mish)
+    (1): NormedLinear(in_features=512, out_features=512, bias=True, act=Mish)
+    (2): Linear(in_features=512, out_features=122, bias=True)
+  )
+  (_Qs): Vectorized 5x Sequential(
+    (0): NormedLinear(in_features=573, out_features=512, bias=True, dropout=0.01, act=Mish)
+    (1): NormedLinear(in_features=512, out_features=512, bias=True, act=Mish)
+    (2): Linear(in_features=512, out_features=101, bias=True)
+  )
+  (_target_Qs): Vectorized 5x Sequential(
+    (0): NormedLinear(in_features=573, out_features=512, bias=True, dropout=0.01, act=Mish)
+    (1): NormedLinear(in_features=512, out_features=512, bias=True, act=Mish)
+    (2): Linear(in_features=512, out_features=101, bias=True)
+  )
+)
+Learnable parameters: 9,736,850
+Director setup complete:
+  Goal-VAE: 512 -> 64 (discrete)
+  Manager: 512 -> 64
+  Goal interval: 10
+ eval             E: 0                     I: 0                     R: 533.1                 S: 0.0                   T: 0:23:03            
+ train            E: 0                     I: 1,000                 T: 0:23:10            
+ train            E: 0                     I: 1,000                 R: 518.2                 S: 0.0                   T: 0:23:10            
+Buffer capacity: 1,000,000
+Storage required: 3.42 GB
+Using CUDA memory for storage.
+ train            E: 1                     I: 2,000                 T: 0:23:19            
+ train            E: 1                     I: 2,000                 R: 532.9                 S: 0.0                   T: 0:23:19            
+ train            E: 2                     I: 3,000                 T: 0:23:26            
+ train            E: 2                     I: 3,000                 R: 547.6                 S: 0.0                   T: 0:23:26            
+ train            E: 3                     I: 4,000                 T: 0:23:33            
+ train            E: 3                     I: 4,000                 R: 552.9                 S: 0.0                   T: 0:23:33            
+ train            E: 4                     I: 5,000                 T: 0:23:41            
+ train            E: 4                     I: 5,000                 R: 543.7                 S: 0.0                   T: 0:23:41            
+Pretraining agent on seed data...
+ train            E: 5                     I: 6,000                 T: 0:39:22            
+ train            E: 5                     I: 6,000                 R: 531.1                 S: 0.0                   T: 0:39:22            
+ train            E: 6                     I: 7,000                 T: 0:44:23            
+ train            E: 6                     I: 7,000                 R: 540.2                 S: 0.0                   T: 0:44:23            
+ train            E: 7                     I: 8,000                 T: 0:49:57            
+ train            E: 7                     I: 8,000                 R: 622.5                 S: 0.0                   T: 0:49:57            
+ train            E: 8                     I: 9,000                 T: 0:55:32            
+ train            E: 8                     I: 9,000                 R: 519.5                 S: 0.0                   T: 0:55:32            
+ train            E: 9                     I: 10,000                T: 1:01:05            
+ train            E: 9                     I: 10,000                R: 541.5                 S: 0.0                   T: 1:01:05            
+ train            E: 10                    I: 11,000                T: 1:06:36            
+ train            E: 10                    I: 11,000                R: 540.9                 S: 0.0                   T: 1:06:36            
+ train            E: 11                    I: 12,000                T: 1:12:03            
+ train            E: 11                    I: 12,000                R: 606.3                 S: 0.0                   T: 1:12:03            
+ train            E: 12                    I: 13,000                T: 1:17:37            
+ train            E: 12                    I: 13,000                R: 570.0                 S: 0.0                   T: 1:17:37            
+ train            E: 13                    I: 14,000                T: 1:23:09            
+ train            E: 13                    I: 14,000                R: 581.3                 S: 0.0                   T: 1:23:09            
+ train            E: 14                    I: 15,000                T: 1:28:43            
+ train            E: 14                    I: 15,000                R: 548.5                 S: 0.0                   T: 1:28:43            
+ train            E: 15                    I: 16,000                T: 1:34:08            
+ train            E: 15                    I: 16,000                R: 550.8                 S: 0.0                   T: 1:34:08            
+ train            E: 16                    I: 17,000                T: 1:39:36            
+ train            E: 16                    I: 17,000                R: 587.2                 S: 0.0                   T: 1:39:36            
+ train            E: 17                    I: 18,000                T: 1:45:06            
+ train            E: 17                    I: 18,000                R: 572.3                 S: 0.0                   T: 1:45:06            
+ train            E: 18                    I: 19,000                T: 1:50:42            
+ train            E: 18                    I: 19,000                R: 658.3                 S: 0.0                   T: 1:50:42            
+ train            E: 19                    I: 20,000                T: 1:56:17            
+ train            E: 19                    I: 20,000                R: 607.7                 S: 0.0                   T: 1:56:17            
+ train            E: 20                    I: 21,000                T: 2:01:50            
+ train            E: 20                    I: 21,000                R: 650.1                 S: 0.0                   T: 2:01:50            
+ train            E: 21                    I: 22,000                T: 2:07:25            
+ train            E: 21                    I: 22,000                R: 671.8                 S: 0.0                   T: 2:07:25            
+ train            E: 22                    I: 23,000                T: 2:12:59            
+ train            E: 22                    I: 23,000                R: 578.4                 S: 0.0                   T: 2:12:59            
+ train            E: 23                    I: 24,000                T: 2:18:33            
+ train            E: 23                    I: 24,000                R: 523.0                 S: 0.0                   T: 2:18:33            
+ train            E: 24                    I: 25,000                T: 2:24:09            
+ train            E: 24                    I: 25,000                R: 605.9                 S: 0.0                   T: 2:24:09            
+ train            E: 25                    I: 26,000                T: 2:29:41            
+ train            E: 25                    I: 26,000                R: 635.2                 S: 0.0                   T: 2:29:41            
+ train            E: 26                    I: 27,000                T: 2:35:13            
+ train            E: 26                    I: 27,000                R: 734.3                 S: 0.0                   T: 2:35:13            
+ train            E: 27                    I: 28,000                T: 2:40:50            
+ train            E: 27                    I: 28,000                R: 624.4                 S: 0.0                   T: 2:40:50            
+ train            E: 28                    I: 29,000                T: 2:46:26            
+ train            E: 28                    I: 29,000                R: 590.8                 S: 0.0                   T: 2:46:26            
+ train            E: 29                    I: 30,000                T: 2:52:05            
+ train            E: 29                    I: 30,000                R: 644.5                 S: 0.0                   T: 2:52:05            
+ train            E: 30                    I: 31,000                T: 2:57:34            
+ train            E: 30                    I: 31,000                R: 884.3                 S: 0.0                   T: 2:57:34            
+ train            E: 31                    I: 32,000                T: 3:03:02            
+ train            E: 31                    I: 32,000                R: 547.6                 S: 0.0                   T: 3:03:02            
+ train            E: 32                    I: 33,000                T: 3:08:26            
+ train            E: 32                    I: 33,000                R: 600.7                 S: 0.0                   T: 3:08:26            
+ train            E: 33                    I: 34,000                T: 3:13:57            
+ train            E: 33                    I: 34,000                R: 547.6                 S: 0.0                   T: 3:13:57            
+ train            E: 34                    I: 35,000                T: 3:19:34            
+ train            E: 34                    I: 35,000                R: 705.5                 S: 0.0                   T: 3:19:34            
+ train            E: 35                    I: 36,000                T: 3:25:12            
+ train            E: 35                    I: 36,000                R: 589.0                 S: 0.0                   T: 3:25:12            
+ train            E: 36                    I: 37,000                T: 3:30:50            
+ train            E: 36                    I: 37,000                R: 687.9                 S: 0.0                   T: 3:30:50            
+ train            E: 37                    I: 38,000                T: 3:35:59            
+ train            E: 37                    I: 38,000                R: 673.2                 S: 0.0                   T: 3:35:59            
+ train            E: 38                    I: 39,000                T: 3:40:28            
+ train            E: 38                    I: 39,000                R: 650.7                 S: 0.0                   T: 3:40:28            
+ train            E: 39                    I: 40,000                T: 3:44:58            
+ train            E: 39                    I: 40,000                R: 787.6                 S: 0.0                   T: 3:44:58            
+ train            E: 40                    I: 41,000                T: 3:50:03            
+ train            E: 40                    I: 41,000                R: 767.3                 S: 0.0                   T: 3:50:03            
+ train            E: 41                    I: 42,000                T: 3:55:35            
+ train            E: 41                    I: 42,000                R: 686.7                 S: 0.0                   T: 3:55:35            
+ train            E: 42                    I: 43,000                T: 4:01:08            
+ train            E: 42                    I: 43,000                R: 710.6                 S: 0.0                   T: 4:01:08            
+ train            E: 43                    I: 44,000                T: 4:06:48            
+ train            E: 43                    I: 44,000                R: 713.0                 S: 0.0                   T: 4:06:48            
+ train            E: 44                    I: 45,000                T: 4:12:57            
+ train            E: 44                    I: 45,000                R: 649.6                 S: 0.0                   T: 4:12:57            
+ train            E: 45                    I: 46,000                T: 4:19:52            
+ train            E: 45                    I: 46,000                R: 647.8                 S: 0.0                   T: 4:19:52            
+ train            E: 46                    I: 47,000                T: 4:26:47            
+ train            E: 46                    I: 47,000                R: 777.3                 S: 0.0                   T: 4:26:47            
+ train            E: 47                    I: 48,000                T: 4:33:41            
+ train            E: 47                    I: 48,000                R: 659.9                 S: 0.0                   T: 4:33:41            
+ train            E: 48                    I: 49,000                T: 4:40:22            
+ train            E: 48                    I: 49,000                R: 730.0                 S: 0.0                   T: 4:40:22            
+ eval             E: 49                    I: 50,000                R: 706.7                 S: 0.0                   T: 5:23:26            
+ train            E: 49                    I: 50,000                T: 5:23:26            
+ train            E: 49                    I: 50,000                R: 631.1                 S: 0.0                   T: 5:23:26            
+ train            E: 50                    I: 51,000                T: 5:30:40            
+ train            E: 50                    I: 51,000                R: 691.1                 S: 0.0                   T: 5:30:40            
+ train            E: 51                    I: 52,000                T: 5:37:53            
+ train            E: 51                    I: 52,000                R: 659.6                 S: 0.0                   T: 5:37:53            
+ train            E: 52                    I: 53,000                T: 5:45:06            
+ train            E: 52                    I: 53,000                R: 742.4                 S: 0.0                   T: 5:45:06            
+ train            E: 53                    I: 54,000                T: 5:52:19            
+ train            E: 53                    I: 54,000                R: 703.5                 S: 0.0                   T: 5:52:19            
+ train            E: 54                    I: 55,000                T: 5:59:32            
+ train            E: 54                    I: 55,000                R: 687.0                 S: 0.0                   T: 5:59:32            
+ train            E: 55                    I: 56,000                T: 6:06:48            
+ train            E: 55                    I: 56,000                R: 718.4                 S: 0.0                   T: 6:06:48            
+ train            E: 56                    I: 57,000                T: 6:14:24            
+ train            E: 56                    I: 57,000                R: 742.1                 S: 0.0                   T: 6:14:24            
+ train            E: 57                    I: 58,000                T: 6:23:29            
+ train            E: 57                    I: 58,000                R: 721.1                 S: 0.0                   T: 6:23:29            
+ train            E: 58                    I: 59,000                T: 6:32:27            
+ train            E: 58                    I: 59,000                R: 658.7                 S: 0.0                   T: 6:32:27            
+ train            E: 59                    I: 60,000                T: 6:41:20            
+ train            E: 59                    I: 60,000                R: 750.3                 S: 0.0                   T: 6:41:20            
+ train            E: 60                    I: 61,000                T: 6:50:14            
+ train            E: 60                    I: 61,000                R: 694.5                 S: 0.0                   T: 6:50:14            
+ train            E: 61                    I: 62,000                T: 6:59:10            
+ train            E: 61                    I: 62,000                R: 645.5                 S: 0.0                   T: 6:59:10            
+ train            E: 62                    I: 63,000                T: 7:07:56            
+ train            E: 62                    I: 63,000                R: 702.5                 S: 0.0                   T: 7:07:56            
+ train            E: 63                    I: 64,000                T: 7:15:45            
+ train            E: 63                    I: 64,000                R: 739.0                 S: 0.0                   T: 7:15:46            
+ train            E: 64                    I: 65,000                T: 7:23:34            
+ train            E: 64                    I: 65,000                R: 744.7                 S: 0.0                   T: 7:23:34            
+ train            E: 65                    I: 66,000                T: 7:31:25            
+ train            E: 65                    I: 66,000                R: 734.7                 S: 0.0                   T: 7:31:25            
+ train            E: 66                    I: 67,000                T: 7:39:18            
+ train            E: 66                    I: 67,000                R: 591.6                 S: 0.0                   T: 7:39:18            
+ train            E: 67                    I: 68,000                T: 7:47:14            
+ train            E: 67                    I: 68,000                R: 738.9                 S: 0.0                   T: 7:47:14            
+ train            E: 68                    I: 69,000                T: 7:55:05            
+ train            E: 68                    I: 69,000                R: 718.6                 S: 0.0                   T: 7:55:05            
+ train            E: 69                    I: 70,000                T: 8:02:58            
+ train            E: 69                    I: 70,000                R: 789.3                 S: 0.0                   T: 8:02:58            
+ train            E: 70                    I: 71,000                T: 8:10:48            
+ train            E: 70                    I: 71,000                R: 650.9                 S: 0.0                   T: 8:10:48            
+ train            E: 71                    I: 72,000                T: 8:18:42            
+ train            E: 71                    I: 72,000                R: 775.3                 S: 0.0                   T: 8:18:42            
+ train            E: 72                    I: 73,000                T: 8:26:33            
+ train            E: 72                    I: 73,000                R: 717.3                 S: 0.0                   T: 8:26:33            
+ train            E: 73                    I: 74,000                T: 8:34:25            
+ train            E: 73                    I: 74,000                R: 979.3                 S: 0.0                   T: 8:34:26            
+ train            E: 74                    I: 75,000                T: 8:42:15            
+ train            E: 74                    I: 75,000                R: 718.1                 S: 0.0                   T: 8:42:15            
+ train            E: 75                    I: 76,000                T: 8:50:07            
+ train            E: 75                    I: 76,000                R: 732.1                 S: 0.0                   T: 8:50:07            
+ train            E: 76                    I: 77,000                T: 8:57:58            
+ train            E: 76                    I: 77,000                R: 669.1                 S: 0.0                   T: 8:57:58            
+ train            E: 77                    I: 78,000                T: 9:05:47            
+ train            E: 77                    I: 78,000                R: 711.4                 S: 0.0                   T: 9:05:47            
+ train            E: 78                    I: 79,000                T: 9:13:32            
+ train            E: 78                    I: 79,000                R: 761.2                 S: 0.0                   T: 9:13:32            
+ train            E: 79                    I: 80,000                T: 9:21:27            
+ train            E: 79                    I: 80,000                R: 773.7                 S: 0.0                   T: 9:21:27            
+ train            E: 80                    I: 81,000                T: 9:29:21            
+ train            E: 80                    I: 81,000                R: 795.5                 S: 0.0                   T: 9:29:21            
+ train            E: 81                    I: 82,000                T: 9:37:17            
+ train            E: 81                    I: 82,000                R: 783.6                 S: 0.0                   T: 9:37:17            
+ train            E: 82                    I: 83,000                T: 9:45:07            
+ train            E: 82                    I: 83,000                R: 912.0                 S: 0.0                   T: 9:45:07            
+ train            E: 83                    I: 84,000                T: 9:52:59            
+ train            E: 83                    I: 84,000                R: 780.1                 S: 0.0                   T: 9:52:59            
+ train            E: 84                    I: 85,000                T: 10:00:51           
+ train            E: 84                    I: 85,000                R: 790.3                 S: 0.0                   T: 10:00:51           
+ train            E: 85                    I: 86,000                T: 10:08:44           
+ train            E: 85                    I: 86,000                R: 727.9                 S: 0.0                   T: 10:08:44           
+ train            E: 86                    I: 87,000                T: 10:16:36           
+ train            E: 86                    I: 87,000                R: 748.5                 S: 0.0                   T: 10:16:36           
+ train            E: 87                    I: 88,000                T: 10:24:30           
+ train            E: 87                    I: 88,000                R: 726.1                 S: 0.0                   T: 10:24:30           
+ train            E: 88                    I: 89,000                T: 10:32:23           
+ train            E: 88                    I: 89,000                R: 827.0                 S: 0.0                   T: 10:32:23           
+ train            E: 89                    I: 90,000                T: 10:40:16           
+ train            E: 89                    I: 90,000                R: 787.9                 S: 0.0                   T: 10:40:16           
+ train            E: 90                    I: 91,000                T: 10:48:09           
+ train            E: 90                    I: 91,000                R: 908.9                 S: 0.0                   T: 10:48:09           
+ train            E: 91                    I: 92,000                T: 10:56:04           
+ train            E: 91                    I: 92,000                R: 797.9                 S: 0.0                   T: 10:56:04           
+ train            E: 92                    I: 93,000                T: 11:03:58           
+ train            E: 92                    I: 93,000                R: 821.2                 S: 0.0                   T: 11:03:58           
+ train            E: 93                    I: 94,000                T: 11:11:48           
+ train            E: 93                    I: 94,000                R: 941.3                 S: 0.0                   T: 11:11:48           
+ train            E: 94                    I: 95,000                T: 11:19:40           
+ train            E: 94                    I: 95,000                R: 763.4                 S: 0.0                   T: 11:19:40           
+ train            E: 95                    I: 96,000                T: 11:27:31           
+ train            E: 95                    I: 96,000                R: 806.0                 S: 0.0                   T: 11:27:31           
+ train            E: 96                    I: 97,000                T: 11:35:20           
+ train            E: 96                    I: 97,000                R: 685.7                 S: 0.0                   T: 11:35:20           
+ train            E: 97                    I: 98,000                T: 11:43:12           
+ train            E: 97                    I: 98,000                R: 835.7                 S: 0.0                   T: 11:43:12           
+ train            E: 98                    I: 99,000                T: 11:51:02           
+ train            E: 98                    I: 99,000                R: 902.1                 S: 0.0                   T: 11:51:02           
+ eval             E: 99                    I: 100,000               R: 681.3                 S: 0.0                   T: 12:36:10           
+ train            E: 99                    I: 100,000               T: 12:36:10           
+ train            E: 99                    I: 100,000               R: 818.7                 S: 0.0                   T: 12:36:10           
+ train            E: 100                   I: 101,000               T: 12:44:05           
+ train            E: 100                   I: 101,000               R: 966.2                 S: 0.0                   T: 12:44:05           
+ train            E: 101                   I: 102,000               T: 12:51:58           
+ train            E: 101                   I: 102,000               R: 919.8                 S: 0.0                   T: 12:51:58           
+ train            E: 102                   I: 103,000               T: 12:59:53           
+ train            E: 102                   I: 103,000               R: 674.1                 S: 0.0                   T: 12:59:53           
+ train            E: 103                   I: 104,000               T: 13:07:46           
+ train            E: 103                   I: 104,000               R: 635.7                 S: 0.0                   T: 13:07:46           
+ train            E: 104                   I: 105,000               T: 13:15:39           
+ train            E: 104                   I: 105,000               R: 582.0                 S: 0.0                   T: 13:15:39           
+ train            E: 105                   I: 106,000               T: 13:23:34           
+ train            E: 105                   I: 106,000               R: 848.0                 S: 0.0                   T: 13:23:34           
+ train            E: 106                   I: 107,000               T: 13:31:28           
+ train            E: 106                   I: 107,000               R: 905.9                 S: 0.0                   T: 13:31:28           
+ train            E: 107                   I: 108,000               T: 13:39:22           
+ train            E: 107                   I: 108,000               R: 663.6                 S: 0.0                   T: 13:39:22           
+ train            E: 108                   I: 109,000               T: 13:47:18           
+ train            E: 108                   I: 109,000               R: 937.9                 S: 0.0                   T: 13:47:18           
+ train            E: 109                   I: 110,000               T: 13:55:15           
+ train            E: 109                   I: 110,000               R: 847.6                 S: 0.0                   T: 13:55:15           
+ train            E: 110                   I: 111,000               T: 14:03:15           
+ train            E: 110                   I: 111,000               R: 739.1                 S: 0.0                   T: 14:03:15           
+ train            E: 111                   I: 112,000               T: 14:11:11           
+ train            E: 111                   I: 112,000               R: 843.6                 S: 0.0                   T: 14:11:11           
+ train            E: 112                   I: 113,000               T: 14:19:07           
+ train            E: 112                   I: 113,000               R: 971.0                 S: 0.0                   T: 14:19:07           
+ train            E: 113                   I: 114,000               T: 14:26:59           
+ train            E: 113                   I: 114,000               R: 899.8                 S: 0.0                   T: 14:26:59           
+ train            E: 114                   I: 115,000               T: 14:34:56           
+ train            E: 114                   I: 115,000               R: 864.9                 S: 0.0                   T: 14:34:56           
+ train            E: 115                   I: 116,000               T: 14:42:50           
+ train            E: 115                   I: 116,000               R: 782.6                 S: 0.0                   T: 14:42:50           
+ train            E: 116                   I: 117,000               T: 14:50:47           
+ train            E: 116                   I: 117,000               R: 854.9                 S: 0.0                   T: 14:50:47           
+ train            E: 117                   I: 118,000               T: 14:58:40           
+ train            E: 117                   I: 118,000               R: 703.5                 S: 0.0                   T: 14:58:40           
+ train            E: 118                   I: 119,000               T: 15:06:30           
+ train            E: 118                   I: 119,000               R: 860.8                 S: 0.0                   T: 15:06:30           
+ train            E: 119                   I: 120,000               T: 15:14:34           
+ train            E: 119                   I: 120,000               R: 724.3                 S: 0.0                   T: 15:14:34           
+ train            E: 120                   I: 121,000               T: 15:22:35           
+ train            E: 120                   I: 121,000               R: 713.9                 S: 0.0                   T: 15:22:35           
+ train            E: 121                   I: 122,000               T: 15:30:30           
+ train            E: 121                   I: 122,000               R: 1046.7                S: 0.0                   T: 15:30:30           
+ train            E: 122                   I: 123,000               T: 15:38:25           
+ train            E: 122                   I: 123,000               R: 943.8                 S: 0.0                   T: 15:38:25           
+ train            E: 123                   I: 124,000               T: 15:46:22           
+ train            E: 123                   I: 124,000               R: 678.8                 S: 0.0                   T: 15:46:22           
+ train            E: 124                   I: 125,000               T: 15:54:18           
+ train            E: 124                   I: 125,000               R: 819.3                 S: 0.0                   T: 15:54:18           
+ train            E: 125                   I: 126,000               T: 16:02:14           
+ train            E: 125                   I: 126,000               R: 1013.4                S: 0.0                   T: 16:02:14           
+ train            E: 126                   I: 127,000               T: 16:10:06           
+ train            E: 126                   I: 127,000               R: 774.0                 S: 0.0                   T: 16:10:06           
+ train            E: 127                   I: 128,000               T: 16:18:01           
+ train            E: 127                   I: 128,000               R: 726.9                 S: 0.0                   T: 16:18:01           
+ train            E: 128                   I: 129,000               T: 16:25:56           
+ train            E: 128                   I: 129,000               R: 1050.2                S: 0.0                   T: 16:25:56           
+ train            E: 129                   I: 130,000               T: 16:33:52           
+ train            E: 129                   I: 130,000               R: 823.5                 S: 0.0                   T: 16:33:52           
+ train            E: 130                   I: 131,000               T: 16:41:50           
+ train            E: 130                   I: 131,000               R: 833.1                 S: 0.0                   T: 16:41:50           
+ train            E: 131                   I: 132,000               T: 16:49:46           
+ train            E: 131                   I: 132,000               R: 813.9                 S: 0.0                   T: 16:49:46           
+ train            E: 132                   I: 133,000               T: 16:57:47           
+ train            E: 132                   I: 133,000               R: 826.6                 S: 0.0                   T: 16:57:47           
+ train            E: 133                   I: 134,000               T: 17:05:44           
+ train            E: 133                   I: 134,000               R: 804.1                 S: 0.0                   T: 17:05:44           
+ train            E: 134                   I: 135,000               T: 17:13:40           
+ train            E: 134                   I: 135,000               R: 944.4                 S: 0.0                   T: 17:13:40           
+ train            E: 135                   I: 136,000               T: 17:21:36           
+ train            E: 135                   I: 136,000               R: 968.0                 S: 0.0                   T: 17:21:36           
+ train            E: 136                   I: 137,000               T: 17:29:31           
+ train            E: 136                   I: 137,000               R: 962.6                 S: 0.0                   T: 17:29:31           
+ train            E: 137                   I: 138,000               T: 17:37:29           
+ train            E: 137                   I: 138,000               R: 925.1                 S: 0.0                   T: 17:37:29           
+ train            E: 138                   I: 139,000               T: 17:45:25           
+ train            E: 138                   I: 139,000               R: 1078.5                S: 0.0                   T: 17:45:25           
+ train            E: 139                   I: 140,000               T: 17:53:26           
+ train            E: 139                   I: 140,000               R: 998.8                 S: 0.0                   T: 17:53:26           
+ train            E: 140                   I: 141,000               T: 18:01:22           
+ train            E: 140                   I: 141,000               R: 1025.7                S: 0.0                   T: 18:01:22           
+ train            E: 141                   I: 142,000               T: 18:09:21           
+ train            E: 141                   I: 142,000               R: 1032.9                S: 0.0                   T: 18:09:21           
+ train            E: 142                   I: 143,000               T: 18:17:27           
+ train            E: 142                   I: 143,000               R: 883.6                 S: 0.0                   T: 18:17:27           
+ train            E: 143                   I: 144,000               T: 18:25:25           
+ train            E: 143                   I: 144,000               R: 1071.9                S: 0.0                   T: 18:25:25           
+ train            E: 144                   I: 145,000               T: 18:33:24           
+ train            E: 144                   I: 145,000               R: 882.5                 S: 0.0                   T: 18:33:24           
+ train            E: 145                   I: 146,000               T: 18:41:21           
+ train            E: 145                   I: 146,000               R: 974.6                 S: 0.0                   T: 18:41:21           
+ train            E: 146                   I: 147,000               T: 18:49:19           
+ train            E: 146                   I: 147,000               R: 1094.0                S: 0.0                   T: 18:49:19           
+ train            E: 147                   I: 148,000               T: 18:57:17           
+ train            E: 147                   I: 148,000               R: 942.6                 S: 0.0                   T: 18:57:17           
+ train            E: 148                   I: 149,000               T: 19:05:13           
+ train            E: 148                   I: 149,000               R: 941.9                 S: 0.0                   T: 19:05:13           
+ eval             E: 149                   I: 150,000               R: 972.7                 S: 0.0                   T: 19:54:50           
+ train            E: 149                   I: 150,000               T: 19:54:50           
+ train            E: 149                   I: 150,000               R: 1112.3                S: 0.0                   T: 19:54:50           
+ train            E: 150                   I: 151,000               T: 20:02:49           
+ train            E: 150                   I: 151,000               R: 895.0                 S: 0.0                   T: 20:02:49           
+ train            E: 151                   I: 152,000               T: 20:10:51           
+ train            E: 151                   I: 152,000               R: 1092.3                S: 0.0                   T: 20:10:51           
+ train            E: 152                   I: 153,000               T: 20:18:48           
+ train            E: 152                   I: 153,000               R: 900.3                 S: 0.0                   T: 20:18:48           
+ train            E: 153                   I: 154,000               T: 20:26:45           
+ train            E: 153                   I: 154,000               R: 799.1                 S: 0.0                   T: 20:26:45           
+ train            E: 154                   I: 155,000               T: 20:34:42           
+ train            E: 154                   I: 155,000               R: 908.5                 S: 0.0                   T: 20:34:42           
+ train            E: 155                   I: 156,000               T: 20:41:31           
+ train            E: 155                   I: 156,000               R: 948.5                 S: 0.0                   T: 20:41:31           
+ train            E: 156                   I: 157,000               T: 20:48:36           
+ train            E: 156                   I: 157,000               R: 1109.8                S: 0.0                   T: 20:48:36           
+ train            E: 157                   I: 158,000               T: 20:55:42           
+ train            E: 157                   I: 158,000               R: 1118.3                S: 0.0                   T: 20:55:42           
+ train            E: 158                   I: 159,000               T: 21:02:59           
+ train            E: 158                   I: 159,000               R: 1036.0                S: 0.0                   T: 21:02:59           
+ train            E: 159                   I: 160,000               T: 21:11:07           
+ train            E: 159                   I: 160,000               R: 1106.9                S: 0.0                   T: 21:11:07           
+ train            E: 160                   I: 161,000               T: 21:19:08           
+ train            E: 160                   I: 161,000               R: 778.2                 S: 0.0                   T: 21:19:08           
+ train            E: 161                   I: 162,000               T: 21:27:08           
+ train            E: 161                   I: 162,000               R: 775.6                 S: 0.0                   T: 21:27:08           
+ train            E: 162                   I: 163,000               T: 21:35:06           
+ train            E: 162                   I: 163,000               R: 726.8                 S: 0.0                   T: 21:35:06           
+ train            E: 163                   I: 164,000               T: 21:43:01           
+ train            E: 163                   I: 164,000               R: 888.4                 S: 0.0                   T: 21:43:01           
+ train            E: 164                   I: 165,000               T: 21:50:53           
+ train            E: 164                   I: 165,000               R: 790.0                 S: 0.0                   T: 21:50:53           
+ train            E: 165                   I: 166,000               T: 21:58:47           
+ train            E: 165                   I: 166,000               R: 685.8                 S: 0.0                   T: 21:58:47           
+ train            E: 166                   I: 167,000               T: 22:06:44           
+ train            E: 166                   I: 167,000               R: 733.1                 S: 0.0                   T: 22:06:44           
+ train            E: 167                   I: 168,000               T: 22:14:39           
+ train            E: 167                   I: 168,000               R: 1032.8                S: 0.0                   T: 22:14:39           
+ train            E: 168                   I: 169,000               T: 22:22:35           
+ train            E: 168                   I: 169,000               R: 791.3                 S: 0.0                   T: 22:22:35           
+ train            E: 169                   I: 170,000               T: 22:30:30           
+ train            E: 169                   I: 170,000               R: 824.0                 S: 0.0                   T: 22:30:30           
+ train            E: 170                   I: 171,000               T: 22:38:23           
+ train            E: 170                   I: 171,000               R: 1015.2                S: 0.0                   T: 22:38:23           
+ train            E: 171                   I: 172,000               T: 22:46:18           
+ train            E: 171                   I: 172,000               R: 932.7                 S: 0.0                   T: 22:46:18           
+ train            E: 172                   I: 173,000               T: 22:54:14           
+ train            E: 172                   I: 173,000               R: 1034.6                S: 0.0                   T: 22:54:14           
+ train            E: 173                   I: 174,000               T: 23:02:11           
+ train            E: 173                   I: 174,000               R: 1124.1                S: 0.0                   T: 23:02:11           
+ train            E: 174                   I: 175,000               T: 23:10:06           
+ train            E: 174                   I: 175,000               R: 891.3                 S: 0.0                   T: 23:10:06           
+ train            E: 175                   I: 176,000               T: 23:18:03           
+ train            E: 175                   I: 176,000               R: 811.3                 S: 0.0                   T: 23:18:03           
+ train            E: 176                   I: 177,000               T: 23:25:53           
+ train            E: 176                   I: 177,000               R: 1070.8                S: 0.0                   T: 23:25:53           
+ train            E: 177                   I: 178,000               T: 23:33:42           
+ train            E: 177                   I: 178,000               R: 939.3                 S: 0.0                   T: 23:33:42           
+ train            E: 178                   I: 179,000               T: 23:41:37           
+ train            E: 178                   I: 179,000               R: 842.4                 S: 0.0                   T: 23:41:37           
+ train            E: 179                   I: 180,000               T: 23:49:29           
+ train            E: 179                   I: 180,000               R: 962.4                 S: 0.0                   T: 23:49:29           
+ train            E: 180                   I: 181,000               T: 23:57:27           
+ train            E: 180                   I: 181,000               R: 768.0                 S: 0.0                   T: 23:57:27           
+ train            E: 181                   I: 182,000               T: 1 day, 0:05:28     
+ train            E: 181                   I: 182,000               R: 1156.3                S: 0.0                   T: 1 day, 0:05:28     
+ train            E: 182                   I: 183,000               T: 1 day, 0:13:21     
+ train            E: 182                   I: 183,000               R: 1139.2                S: 0.0                   T: 1 day, 0:13:21     
+ train            E: 183                   I: 184,000               T: 1 day, 0:21:12     
+ train            E: 183                   I: 184,000               R: 999.8                 S: 0.0                   T: 1 day, 0:21:12     
+ train            E: 184                   I: 185,000               T: 1 day, 0:29:04     
+ train            E: 184                   I: 185,000               R: 842.2                 S: 0.0                   T: 1 day, 0:29:04     
+ train            E: 185                   I: 186,000               T: 1 day, 0:36:55     
+ train            E: 185                   I: 186,000               R: 840.8                 S: 0.0                   T: 1 day, 0:36:55     
+ train            E: 186                   I: 187,000               T: 1 day, 0:44:44     
+ train            E: 186                   I: 187,000               R: 1091.6                S: 0.0                   T: 1 day, 0:44:44     
+ train            E: 187                   I: 188,000               T: 1 day, 0:52:32     
+ train            E: 187                   I: 188,000               R: 942.0                 S: 0.0                   T: 1 day, 0:52:32     
+ train            E: 188                   I: 189,000               T: 1 day, 1:00:24     
+ train            E: 188                   I: 189,000               R: 1071.1                S: 0.0                   T: 1 day, 1:00:24     
+ train            E: 189                   I: 190,000               T: 1 day, 1:08:13     
+ train            E: 189                   I: 190,000               R: 1153.3                S: 0.0                   T: 1 day, 1:08:13     
+ train            E: 190                   I: 191,000               T: 1 day, 1:16:05     
+ train            E: 190                   I: 191,000               R: 823.5                 S: 0.0                   T: 1 day, 1:16:05     
+ train            E: 191                   I: 192,000               T: 1 day, 1:23:55     
+ train            E: 191                   I: 192,000               R: 844.6                 S: 0.0                   T: 1 day, 1:23:55     
+ train            E: 192                   I: 193,000               T: 1 day, 1:31:47     
+ train            E: 192                   I: 193,000               R: 1045.6                S: 0.0                   T: 1 day, 1:31:47     
+ train            E: 193                   I: 194,000               T: 1 day, 1:39:39     
+ train            E: 193                   I: 194,000               R: 870.2                 S: 0.0                   T: 1 day, 1:39:39     
+ train            E: 194                   I: 195,000               T: 1 day, 1:47:31     
+ train            E: 194                   I: 195,000               R: 1096.1                S: 0.0                   T: 1 day, 1:47:31     
+ train            E: 195                   I: 196,000               T: 1 day, 1:55:25     
+ train            E: 195                   I: 196,000               R: 1133.7                S: 0.0                   T: 1 day, 1:55:25     
+ train            E: 196                   I: 197,000               T: 1 day, 2:03:19     
+ train            E: 196                   I: 197,000               R: 933.6                 S: 0.0                   T: 1 day, 2:03:19     
+ train            E: 197                   I: 198,000               T: 1 day, 2:11:12     
+ train            E: 197                   I: 198,000               R: 1053.7                S: 0.0                   T: 1 day, 2:11:12     
+ train            E: 198                   I: 199,000               T: 1 day, 2:19:03     
+ train            E: 198                   I: 199,000               R: 1082.2                S: 0.0                   T: 1 day, 2:19:03     
+ eval             E: 199                   I: 200,000               R: 1066.3                S: 0.0                   T: 1 day, 3:08:13     
+ train            E: 199                   I: 200,000               T: 1 day, 3:08:13     
+ train            E: 199                   I: 200,000               R: 1156.7                S: 0.0                   T: 1 day, 3:08:13     
+ train            E: 200                   I: 201,000               T: 1 day, 3:16:04     
+ train            E: 200                   I: 201,000               R: 1026.0                S: 0.0                   T: 1 day, 3:16:04     
+ train            E: 201                   I: 202,000               T: 1 day, 3:23:57     
+ train            E: 201                   I: 202,000               R: 905.4                 S: 0.0                   T: 1 day, 3:23:57     
+ train            E: 202                   I: 203,000               T: 1 day, 3:31:49     
+ train            E: 202                   I: 203,000               R: 1096.6                S: 0.0                   T: 1 day, 3:31:49     
+ train            E: 203                   I: 204,000               T: 1 day, 3:39:39     
+ train            E: 203                   I: 204,000               R: 1027.7                S: 0.0                   T: 1 day, 3:39:39     
+ train            E: 204                   I: 205,000               T: 1 day, 3:47:29     
+ train            E: 204                   I: 205,000               R: 1125.9                S: 0.0                   T: 1 day, 3:47:29     
+ train            E: 205                   I: 206,000               T: 1 day, 3:55:14     
+ train            E: 205                   I: 206,000               R: 1060.9                S: 0.0                   T: 1 day, 3:55:14     
+ train            E: 206                   I: 207,000               T: 1 day, 4:02:33     
+ train            E: 206                   I: 207,000               R: 1074.3                S: 0.0                   T: 1 day, 4:02:33     
+ train            E: 207                   I: 208,000               T: 1 day, 4:09:48     
+ train            E: 207                   I: 208,000               R: 984.0                 S: 0.0                   T: 1 day, 4:09:48     
+ train            E: 208                   I: 209,000               T: 1 day, 4:17:04     
+ train            E: 208                   I: 209,000               R: 961.6                 S: 0.0                   T: 1 day, 4:17:04     
+ train            E: 209                   I: 210,000               T: 1 day, 4:24:23     
+ train            E: 209                   I: 210,000               R: 939.9                 S: 0.0                   T: 1 day, 4:24:23     
+ train            E: 210                   I: 211,000               T: 1 day, 4:31:37     
+ train            E: 210                   I: 211,000               R: 1032.7                S: 0.0                   T: 1 day, 4:31:37     
+ train            E: 211                   I: 212,000               T: 1 day, 4:38:50     
+ train            E: 211                   I: 212,000               R: 1128.2                S: 0.0                   T: 1 day, 4:38:50     
+ train            E: 212                   I: 213,000               T: 1 day, 4:46:03     
+ train            E: 212                   I: 213,000               R: 1088.6                S: 0.0                   T: 1 day, 4:46:03     
+ train            E: 213                   I: 214,000               T: 1 day, 4:53:17     
+ train            E: 213                   I: 214,000               R: 1180.1                S: 0.0                   T: 1 day, 4:53:17     
+ train            E: 214                   I: 215,000               T: 1 day, 5:00:30     
+ train            E: 214                   I: 215,000               R: 909.6                 S: 0.0                   T: 1 day, 5:00:30     
+ train            E: 215                   I: 216,000               T: 1 day, 5:07:05     
+ train            E: 215                   I: 216,000               R: 1000.5                S: 0.0                   T: 1 day, 5:07:05     
+ train            E: 216                   I: 217,000               T: 1 day, 5:13:32     
+ train            E: 216                   I: 217,000               R: 1052.8                S: 0.0                   T: 1 day, 5:13:32     
+ train            E: 217                   I: 218,000               T: 1 day, 5:19:57     
+ train            E: 217                   I: 218,000               R: 838.1                 S: 0.0                   T: 1 day, 5:19:57     
+ train            E: 218                   I: 219,000               T: 1 day, 5:26:25     
+ train            E: 218                   I: 219,000               R: 837.3                 S: 0.0                   T: 1 day, 5:26:25     
+ train            E: 219                   I: 220,000               T: 1 day, 5:33:24     
+ train            E: 219                   I: 220,000               R: 1148.4                S: 0.0                   T: 1 day, 5:33:24     
+ train            E: 220                   I: 221,000               T: 1 day, 5:40:37     
+ train            E: 220                   I: 221,000               R: 1020.6                S: 0.0                   T: 1 day, 5:40:37     
+ train            E: 221                   I: 222,000               T: 1 day, 5:48:00     
+ train            E: 221                   I: 222,000               R: 1025.8                S: 0.0                   T: 1 day, 5:48:00     
+ train            E: 222                   I: 223,000               T: 1 day, 5:55:18     
+ train            E: 222                   I: 223,000               R: 1182.1                S: 0.0                   T: 1 day, 5:55:18     
+ train            E: 223                   I: 224,000               T: 1 day, 6:02:33     
+ train            E: 223                   I: 224,000               R: 1170.1                S: 0.0                   T: 1 day, 6:02:33     
+ train            E: 224                   I: 225,000               T: 1 day, 6:09:46     
+ train            E: 224                   I: 225,000               R: 1025.9                S: 0.0                   T: 1 day, 6:09:46     
+ train            E: 225                   I: 226,000               T: 1 day, 6:16:59     
+ train            E: 225                   I: 226,000               R: 1173.6                S: 0.0                   T: 1 day, 6:16:59     
+ train            E: 226                   I: 227,000               T: 1 day, 6:24:14     
+ train            E: 226                   I: 227,000               R: 870.9                 S: 0.0                   T: 1 day, 6:24:14     
+ train            E: 227                   I: 228,000               T: 1 day, 6:31:51     
+ train            E: 227                   I: 228,000               R: 920.2                 S: 0.0                   T: 1 day, 6:31:51     
+ train            E: 228                   I: 229,000               T: 1 day, 6:39:42     
+ train            E: 228                   I: 229,000               R: 897.6                 S: 0.0                   T: 1 day, 6:39:42     
+ train            E: 229                   I: 230,000               T: 1 day, 6:47:33     
+ train            E: 229                   I: 230,000               R: 1057.3                S: 0.0                   T: 1 day, 6:47:33     
+ train            E: 230                   I: 231,000               T: 1 day, 6:55:23     
+ train            E: 230                   I: 231,000               R: 1113.1                S: 0.0                   T: 1 day, 6:55:23     
+ train            E: 231                   I: 232,000               T: 1 day, 7:03:14     
+ train            E: 231                   I: 232,000               R: 976.2                 S: 0.0                   T: 1 day, 7:03:14     
+ train            E: 232                   I: 233,000               T: 1 day, 7:11:03     
+ train            E: 232                   I: 233,000               R: 1022.4                S: 0.0                   T: 1 day, 7:11:04     
+ train            E: 233                   I: 234,000               T: 1 day, 7:18:56     
+ train            E: 233                   I: 234,000               R: 953.8                 S: 0.0                   T: 1 day, 7:18:56     
+ train            E: 234                   I: 235,000               T: 1 day, 7:26:47     
+ train            E: 234                   I: 235,000               R: 1118.5                S: 0.0                   T: 1 day, 7:26:47     
+ train            E: 235                   I: 236,000               T: 1 day, 7:34:37     
+ train            E: 235                   I: 236,000               R: 1123.5                S: 0.0                   T: 1 day, 7:34:37     
+ train            E: 236                   I: 237,000               T: 1 day, 7:42:27     
+ train            E: 236                   I: 237,000               R: 1160.4                S: 0.0                   T: 1 day, 7:42:27     
+ train            E: 237                   I: 238,000               T: 1 day, 7:50:17     
+ train            E: 237                   I: 238,000               R: 979.5                 S: 0.0                   T: 1 day, 7:50:17     
+ train            E: 238                   I: 239,000               T: 1 day, 7:58:08     
+ train            E: 238                   I: 239,000               R: 831.9                 S: 0.0                   T: 1 day, 7:58:08     
+ train            E: 239                   I: 240,000               T: 1 day, 8:05:56     
+ train            E: 239                   I: 240,000               R: 990.6                 S: 0.0                   T: 1 day, 8:05:56     
+ train            E: 240                   I: 241,000               T: 1 day, 8:13:49     
+ train            E: 240                   I: 241,000               R: 1097.1                S: 0.0                   T: 1 day, 8:13:49     
+ train            E: 241                   I: 242,000               T: 1 day, 8:21:39     
+ train            E: 241                   I: 242,000               R: 997.0                 S: 0.0                   T: 1 day, 8:21:39     
+ train            E: 242                   I: 243,000               T: 1 day, 8:29:27     
+ train            E: 242                   I: 243,000               R: 969.8                 S: 0.0                   T: 1 day, 8:29:27     
+ train            E: 243                   I: 244,000               T: 1 day, 8:37:16     
+ train            E: 243                   I: 244,000               R: 1147.0                S: 0.0                   T: 1 day, 8:37:16     
+ train            E: 244                   I: 245,000               T: 1 day, 8:45:09     
+ train            E: 244                   I: 245,000               R: 1030.0                S: 0.0                   T: 1 day, 8:45:09     
+ train            E: 245                   I: 246,000               T: 1 day, 8:52:57     
+ train            E: 245                   I: 246,000               R: 1049.9                S: 0.0                   T: 1 day, 8:52:57     
+ train            E: 246                   I: 247,000               T: 1 day, 9:00:47     
+ train            E: 246                   I: 247,000               R: 1061.4                S: 0.0                   T: 1 day, 9:00:47     
+ train            E: 247                   I: 248,000               T: 1 day, 9:08:36     
+ train            E: 247                   I: 248,000               R: 879.2                 S: 0.0                   T: 1 day, 9:08:36     
+ train            E: 248                   I: 249,000               T: 1 day, 9:16:25     
+ train            E: 248                   I: 249,000               R: 1028.3                S: 0.0                   T: 1 day, 9:16:25     
+ eval             E: 249                   I: 250,000               R: 1087.8                S: 0.0                   T: 1 day, 10:04:45    
+ train            E: 249                   I: 250,000               T: 1 day, 10:04:45    
+ train            E: 249                   I: 250,000               R: 1154.9                S: 0.0                   T: 1 day, 10:04:45    
+ train            E: 250                   I: 251,000               T: 1 day, 10:12:41    
+ train            E: 250                   I: 251,000               R: 986.0                 S: 0.0                   T: 1 day, 10:12:41    
+ train            E: 251                   I: 252,000               T: 1 day, 10:20:35    
+ train            E: 251                   I: 252,000               R: 1131.8                S: 0.0                   T: 1 day, 10:20:35    
+ train            E: 252                   I: 253,000               T: 1 day, 10:28:29    
+ train            E: 252                   I: 253,000               R: 1009.7                S: 0.0                   T: 1 day, 10:28:29    
+ train            E: 253                   I: 254,000               T: 1 day, 10:36:28    
+ train            E: 253                   I: 254,000               R: 1185.6                S: 0.0                   T: 1 day, 10:36:28    
+ train            E: 254                   I: 255,000               T: 1 day, 10:44:26    
+ train            E: 254                   I: 255,000               R: 1157.3                S: 0.0                   T: 1 day, 10:44:26    
+ train            E: 255                   I: 256,000               T: 1 day, 10:52:22    
+ train            E: 255                   I: 256,000               R: 1008.1                S: 0.0                   T: 1 day, 10:52:22    
+ train            E: 256                   I: 257,000               T: 1 day, 11:00:16    
+ train            E: 256                   I: 257,000               R: 1093.1                S: 0.0                   T: 1 day, 11:00:16    
+ train            E: 257                   I: 258,000               T: 1 day, 11:08:15    
+ train            E: 257                   I: 258,000               R: 1157.0                S: 0.0                   T: 1 day, 11:08:15    
+ train            E: 258                   I: 259,000               T: 1 day, 11:16:16    
+ train            E: 258                   I: 259,000               R: 1081.6                S: 0.0                   T: 1 day, 11:16:16    
+ train            E: 259                   I: 260,000               T: 1 day, 11:24:11    
+ train            E: 259                   I: 260,000               R: 1152.6                S: 0.0                   T: 1 day, 11:24:11    
+ train            E: 260                   I: 261,000               T: 1 day, 11:32:08    
+ train            E: 260                   I: 261,000               R: 1058.3                S: 0.0                   T: 1 day, 11:32:08    
+ train            E: 261                   I: 262,000               T: 1 day, 11:40:09    
+ train            E: 261                   I: 262,000               R: 955.7                 S: 0.0                   T: 1 day, 11:40:09    
+ train            E: 262                   I: 263,000               T: 1 day, 11:48:05    
+ train            E: 262                   I: 263,000               R: 1127.2                S: 0.0                   T: 1 day, 11:48:05    
+ train            E: 263                   I: 264,000               T: 1 day, 11:56:00    
+ train            E: 263                   I: 264,000               R: 851.5                 S: 0.0                   T: 1 day, 11:56:00    
+ train            E: 264                   I: 265,000               T: 1 day, 12:03:55    
+ train            E: 264                   I: 265,000               R: 1153.7                S: 0.0                   T: 1 day, 12:03:55    
+ train            E: 265                   I: 266,000               T: 1 day, 12:11:47    
+ train            E: 265                   I: 266,000               R: 1118.3                S: 0.0                   T: 1 day, 12:11:47    
+ train            E: 266                   I: 267,000               T: 1 day, 12:19:43    
+ train            E: 266                   I: 267,000               R: 1009.5                S: 0.0                   T: 1 day, 12:19:43    
+ train            E: 267                   I: 268,000               T: 1 day, 12:27:40    
+ train            E: 267                   I: 268,000               R: 849.2                 S: 0.0                   T: 1 day, 12:27:40    
+ train            E: 268                   I: 269,000               T: 1 day, 12:35:35    
+ train            E: 268                   I: 269,000               R: 1063.2                S: 0.0                   T: 1 day, 12:35:35    
+ train            E: 269                   I: 270,000               T: 1 day, 12:43:27    
+ train            E: 269                   I: 270,000               R: 1103.2                S: 0.0                   T: 1 day, 12:43:27    
+ train            E: 270                   I: 271,000               T: 1 day, 12:51:22    
+ train            E: 270                   I: 271,000               R: 1134.7                S: 0.0                   T: 1 day, 12:51:22    
+ train            E: 271                   I: 272,000               T: 1 day, 12:59:18    
+ train            E: 271                   I: 272,000               R: 1170.8                S: 0.0                   T: 1 day, 12:59:18    
+ train            E: 272                   I: 273,000               T: 1 day, 13:07:11    
+ train            E: 272                   I: 273,000               R: 1057.9                S: 0.0                   T: 1 day, 13:07:11    
+ train            E: 273                   I: 274,000               T: 1 day, 13:15:08    
+ train            E: 273                   I: 274,000               R: 1130.2                S: 0.0                   T: 1 day, 13:15:08    
+ train            E: 274                   I: 275,000               T: 1 day, 13:23:00    
+ train            E: 274                   I: 275,000               R: 1151.4                S: 0.0                   T: 1 day, 13:23:00    
+ train            E: 275                   I: 276,000               T: 1 day, 13:30:36    
+ train            E: 275                   I: 276,000               R: 1029.4                S: 0.0                   T: 1 day, 13:30:36    
+ train            E: 276                   I: 277,000               T: 1 day, 13:37:31    
+ train            E: 276                   I: 277,000               R: 1007.9                S: 0.0                   T: 1 day, 13:37:31    
+ train            E: 277                   I: 278,000               T: 1 day, 13:44:35    
+ train            E: 277                   I: 278,000               R: 1057.8                S: 0.0                   T: 1 day, 13:44:35    
+ train            E: 278                   I: 279,000               T: 1 day, 13:51:39    
+ train            E: 278                   I: 279,000               R: 1182.4                S: 0.0                   T: 1 day, 13:51:39    
+ train            E: 279                   I: 280,000               T: 1 day, 13:59:10    
+ train            E: 279                   I: 280,000               R: 1018.5                S: 0.0                   T: 1 day, 13:59:10    
+ train            E: 280                   I: 281,000               T: 1 day, 14:07:05    
+ train            E: 280                   I: 281,000               R: 1123.5                S: 0.0                   T: 1 day, 14:07:05    
+ train            E: 281                   I: 282,000               T: 1 day, 14:15:01    
+ train            E: 281                   I: 282,000               R: 1143.6                S: 0.0                   T: 1 day, 14:15:01    
+ train            E: 282                   I: 283,000               T: 1 day, 14:22:55    
+ train            E: 282                   I: 283,000               R: 1106.2                S: 0.0                   T: 1 day, 14:22:55    
+ train            E: 283                   I: 284,000               T: 1 day, 14:30:59    
+ train            E: 283                   I: 284,000               R: 1015.8                S: 0.0                   T: 1 day, 14:30:59    
+ train            E: 284                   I: 285,000               T: 1 day, 14:38:58    
+ train            E: 284                   I: 285,000               R: 1031.9                S: 0.0                   T: 1 day, 14:38:58    
+ train            E: 285                   I: 286,000               T: 1 day, 14:46:55    
+ train            E: 285                   I: 286,000               R: 915.7                 S: 0.0                   T: 1 day, 14:46:55    
+ train            E: 286                   I: 287,000               T: 1 day, 14:54:51    
+ train            E: 286                   I: 287,000               R: 1045.1                S: 0.0                   T: 1 day, 14:54:51    
+ train            E: 287                   I: 288,000               T: 1 day, 15:02:49    
+ train            E: 287                   I: 288,000               R: 1131.8                S: 0.0                   T: 1 day, 15:02:49    
+ train            E: 288                   I: 289,000               T: 1 day, 15:10:46    
+ train            E: 288                   I: 289,000               R: 1017.1                S: 0.0                   T: 1 day, 15:10:46    
+ train            E: 289                   I: 290,000               T: 1 day, 15:18:50    
+ train            E: 289                   I: 290,000               R: 1044.6                S: 0.0                   T: 1 day, 15:18:50    
+ train            E: 290                   I: 291,000               T: 1 day, 15:26:45    
+ train            E: 290                   I: 291,000               R: 1003.9                S: 0.0                   T: 1 day, 15:26:45    
+ train            E: 291                   I: 292,000               T: 1 day, 15:34:42    
+ train            E: 291                   I: 292,000               R: 1004.0                S: 0.0                   T: 1 day, 15:34:42    
+ train            E: 292                   I: 293,000               T: 1 day, 15:42:39    
+ train            E: 292                   I: 293,000               R: 1124.0                S: 0.0                   T: 1 day, 15:42:39    
+ train            E: 293                   I: 294,000               T: 1 day, 15:50:38    
+ train            E: 293                   I: 294,000               R: 1124.3                S: 0.0                   T: 1 day, 15:50:38    
+ train            E: 294                   I: 295,000               T: 1 day, 15:58:33    
+ train            E: 294                   I: 295,000               R: 1174.5                S: 0.0                   T: 1 day, 15:58:33    
+ train            E: 295                   I: 296,000               T: 1 day, 16:06:30    
+ train            E: 295                   I: 296,000               R: 1075.9                S: 0.0                   T: 1 day, 16:06:30    
+ train            E: 296                   I: 297,000               T: 1 day, 16:14:27    
+ train            E: 296                   I: 297,000               R: 1207.9                S: 0.0                   T: 1 day, 16:14:27    
+ train            E: 297                   I: 298,000               T: 1 day, 16:22:23    
+ train            E: 297                   I: 298,000               R: 1157.3                S: 0.0                   T: 1 day, 16:22:23    
+ train            E: 298                   I: 299,000               T: 1 day, 16:30:20    
+ train            E: 298                   I: 299,000               R: 998.3                 S: 0.0                   T: 1 day, 16:30:20    
+ eval             E: 299                   I: 300,000               R: 1075.8                S: 0.0                   T: 1 day, 17:19:29    
+ train            E: 299                   I: 300,000               T: 1 day, 17:19:29    
+ train            E: 299                   I: 300,000               R: 845.8                 S: 0.0                   T: 1 day, 17:19:29    
+ train            E: 300                   I: 301,000               T: 1 day, 17:27:32    
+ train            E: 300                   I: 301,000               R: 1076.3                S: 0.0                   T: 1 day, 17:27:32    
+ train            E: 301                   I: 302,000               T: 1 day, 17:35:35    
+ train            E: 301                   I: 302,000               R: 829.9                 S: 0.0                   T: 1 day, 17:35:35    
+ train            E: 302                   I: 303,000               T: 1 day, 17:43:29    
+ train            E: 302                   I: 303,000               R: 1055.6                S: 0.0                   T: 1 day, 17:43:29    
+ train            E: 303                   I: 304,000               T: 1 day, 17:51:26    
+ train            E: 303                   I: 304,000               R: 1038.1                S: 0.0                   T: 1 day, 17:51:26    
+ train            E: 304                   I: 305,000               T: 1 day, 17:59:18    
+ train            E: 304                   I: 305,000               R: 1118.2                S: 0.0                   T: 1 day, 17:59:18    
+ train            E: 305                   I: 306,000               T: 1 day, 18:07:15    
+ train            E: 305                   I: 306,000               R: 1094.1                S: 0.0                   T: 1 day, 18:07:15    
+ train            E: 306                   I: 307,000               T: 1 day, 18:15:12    
+ train            E: 306                   I: 307,000               R: 1004.8                S: 0.0                   T: 1 day, 18:15:12    
+ train            E: 307                   I: 308,000               T: 1 day, 18:23:08    
+ train            E: 307                   I: 308,000               R: 1016.3                S: 0.0                   T: 1 day, 18:23:08    
+ train            E: 308                   I: 309,000               T: 1 day, 18:31:06    
+ train            E: 308                   I: 309,000               R: 1006.6                S: 0.0                   T: 1 day, 18:31:06    
+ train            E: 309                   I: 310,000               T: 1 day, 18:39:05    
+ train            E: 309                   I: 310,000               R: 1107.0                S: 0.0                   T: 1 day, 18:39:05    
+ train            E: 310                   I: 311,000               T: 1 day, 18:47:04    
+ train            E: 310                   I: 311,000               R: 1148.4                S: 0.0                   T: 1 day, 18:47:04    
+ train            E: 311                   I: 312,000               T: 1 day, 18:55:01    
+ train            E: 311                   I: 312,000               R: 978.4                 S: 0.0                   T: 1 day, 18:55:01    
+ train            E: 312                   I: 313,000               T: 1 day, 19:02:57    
+ train            E: 312                   I: 313,000               R: 1096.6                S: 0.0                   T: 1 day, 19:02:57    
+ train            E: 313                   I: 314,000               T: 1 day, 19:10:57    
+ train            E: 313                   I: 314,000               R: 1089.0                S: 0.0                   T: 1 day, 19:10:57    
+ train            E: 314                   I: 315,000               T: 1 day, 19:18:54    
+ train            E: 314                   I: 315,000               R: 1161.8                S: 0.0                   T: 1 day, 19:18:54    
+ train            E: 315                   I: 316,000               T: 1 day, 19:26:52    
+ train            E: 315                   I: 316,000               R: 1101.1                S: 0.0                   T: 1 day, 19:26:52    
+ train            E: 316                   I: 317,000               T: 1 day, 19:34:49    
+ train            E: 316                   I: 317,000               R: 1182.2                S: 0.0                   T: 1 day, 19:34:49    
+ train            E: 317                   I: 318,000               T: 1 day, 19:42:48    
+ train            E: 317                   I: 318,000               R: 1124.2                S: 0.0                   T: 1 day, 19:42:48    
+ train            E: 318                   I: 319,000               T: 1 day, 19:50:46    
+ train            E: 318                   I: 319,000               R: 1096.0                S: 0.0                   T: 1 day, 19:50:46    
+ train            E: 319                   I: 320,000               T: 1 day, 19:58:44    
+ train            E: 319                   I: 320,000               R: 1136.9                S: 0.0                   T: 1 day, 19:58:44    
+ train            E: 320                   I: 321,000               T: 1 day, 20:06:39    
+ train            E: 320                   I: 321,000               R: 1112.9                S: 0.0                   T: 1 day, 20:06:39    
+ train            E: 321                   I: 322,000               T: 1 day, 20:14:36    
+ train            E: 321                   I: 322,000               R: 1145.4                S: 0.0                   T: 1 day, 20:14:36    
+ train            E: 322                   I: 323,000               T: 1 day, 20:22:36    
+ train            E: 322                   I: 323,000               R: 1161.5                S: 0.0                   T: 1 day, 20:22:36    
+ train            E: 323                   I: 324,000               T: 1 day, 20:30:44    
+ train            E: 323                   I: 324,000               R: 1071.9                S: 0.0                   T: 1 day, 20:30:44    
+ train            E: 324                   I: 325,000               T: 1 day, 20:38:40    
+ train            E: 324                   I: 325,000               R: 1194.3                S: 0.0                   T: 1 day, 20:38:40    
+ train            E: 325                   I: 326,000               T: 1 day, 20:46:38    
+ train            E: 325                   I: 326,000               R: 1047.7                S: 0.0                   T: 1 day, 20:46:38    
+ train            E: 326                   I: 327,000               T: 1 day, 20:54:31    
+ train            E: 326                   I: 327,000               R: 1078.6                S: 0.0                   T: 1 day, 20:54:31    
+ train            E: 327                   I: 328,000               T: 1 day, 21:02:27    
+ train            E: 327                   I: 328,000               R: 1019.0                S: 0.0                   T: 1 day, 21:02:27    
+ train            E: 328                   I: 329,000               T: 1 day, 21:10:26    
+ train            E: 328                   I: 329,000               R: 1095.6                S: 0.0                   T: 1 day, 21:10:26    
+ train            E: 329                   I: 330,000               T: 1 day, 21:18:22    
+ train            E: 329                   I: 330,000               R: 1107.6                S: 0.0                   T: 1 day, 21:18:22    
+ train            E: 330                   I: 331,000               T: 1 day, 21:26:21    
+ train            E: 330                   I: 331,000               R: 1125.0                S: 0.0                   T: 1 day, 21:26:21    
+ train            E: 331                   I: 332,000               T: 1 day, 21:34:20    
+ train            E: 331                   I: 332,000               R: 1134.3                S: 0.0                   T: 1 day, 21:34:20    
+ train            E: 332                   I: 333,000               T: 1 day, 21:42:18    
+ train            E: 332                   I: 333,000               R: 1078.6                S: 0.0                   T: 1 day, 21:42:18    
+ train            E: 333                   I: 334,000               T: 1 day, 21:50:16    
+ train            E: 333                   I: 334,000               R: 1087.8                S: 0.0                   T: 1 day, 21:50:16    
+ train            E: 334                   I: 335,000               T: 1 day, 21:58:14    
+ train            E: 334                   I: 335,000               R: 1013.3                S: 0.0                   T: 1 day, 21:58:14    
+ train            E: 335                   I: 336,000               T: 1 day, 22:06:14    
+ train            E: 335                   I: 336,000               R: 1114.4                S: 0.0                   T: 1 day, 22:06:14    
+ train            E: 336                   I: 337,000               T: 1 day, 22:13:32    
+ train            E: 336                   I: 337,000               R: 1070.3                S: 0.0                   T: 1 day, 22:13:32    
+ train            E: 337                   I: 338,000               T: 1 day, 22:20:43    
+ train            E: 337                   I: 338,000               R: 1125.4                S: 0.0                   T: 1 day, 22:20:43    
+ train            E: 338                   I: 339,000               T: 1 day, 22:27:54    
+ train            E: 338                   I: 339,000               R: 1032.5                S: 0.0                   T: 1 day, 22:27:54    
+ train            E: 339                   I: 340,000               T: 1 day, 22:35:07    
+ train            E: 339                   I: 340,000               R: 1017.7                S: 0.0                   T: 1 day, 22:35:07    
+ train            E: 340                   I: 341,000               T: 1 day, 22:43:07    
+ train            E: 340                   I: 341,000               R: 1110.1                S: 0.0                   T: 1 day, 22:43:07    
+ train            E: 341                   I: 342,000               T: 1 day, 22:51:10    
+ train            E: 341                   I: 342,000               R: 1248.6                S: 0.0                   T: 1 day, 22:51:10    
+ train            E: 342                   I: 343,000               T: 1 day, 22:59:10    
+ train            E: 342                   I: 343,000               R: 1012.7                S: 0.0                   T: 1 day, 22:59:10    
+ train            E: 343                   I: 344,000               T: 1 day, 23:07:09    
+ train            E: 343                   I: 344,000               R: 1111.7                S: 0.0                   T: 1 day, 23:07:09    
+ train            E: 344                   I: 345,000               T: 1 day, 23:15:09    
+ train            E: 344                   I: 345,000               R: 1178.7                S: 0.0                   T: 1 day, 23:15:09    
+ train            E: 345                   I: 346,000               T: 1 day, 23:23:22    
+ train            E: 345                   I: 346,000               R: 1162.2                S: 0.0                   T: 1 day, 23:23:22    
+ train            E: 346                   I: 347,000               T: 1 day, 23:31:28    
+ train            E: 346                   I: 347,000               R: 1120.1                S: 0.0                   T: 1 day, 23:31:28    
+ train            E: 347                   I: 348,000               T: 1 day, 23:39:25    
+ train            E: 347                   I: 348,000               R: 1050.0                S: 0.0                   T: 1 day, 23:39:25    
+ train            E: 348                   I: 349,000               T: 1 day, 23:47:21    
+ train            E: 348                   I: 349,000               R: 1130.1                S: 0.0                   T: 1 day, 23:47:21    
+ eval             E: 349                   I: 350,000               R: 1097.2                S: 0.0                   T: 2 days, 0:36:14    
+ train            E: 349                   I: 350,000               T: 2 days, 0:36:14    
+ train            E: 349                   I: 350,000               R: 1049.8                S: 0.0                   T: 2 days, 0:36:14    
+ train            E: 350                   I: 351,000               T: 2 days, 0:44:07    
+ train            E: 350                   I: 351,000               R: 1138.1                S: 0.0                   T: 2 days, 0:44:07    
+ train            E: 351                   I: 352,000               T: 2 days, 0:52:00    
+ train            E: 351                   I: 352,000               R: 1127.4                S: 0.0                   T: 2 days, 0:52:00    
+ train            E: 352                   I: 353,000               T: 2 days, 0:59:51    
+ train            E: 352                   I: 353,000               R: 1077.7                S: 0.0                   T: 2 days, 0:59:51    
+ train            E: 353                   I: 354,000               T: 2 days, 1:07:46    
+ train            E: 353                   I: 354,000               R: 1093.2                S: 0.0                   T: 2 days, 1:07:46    
+ train            E: 354                   I: 355,000               T: 2 days, 1:15:38    
+ train            E: 354                   I: 355,000               R: 1095.7                S: 0.0                   T: 2 days, 1:15:38    
+ train            E: 355                   I: 356,000               T: 2 days, 1:23:28    
+ train            E: 355                   I: 356,000               R: 1160.8                S: 0.0                   T: 2 days, 1:23:28    
+ train            E: 356                   I: 357,000               T: 2 days, 1:31:19    
+ train            E: 356                   I: 357,000               R: 1137.4                S: 0.0                   T: 2 days, 1:31:19    
+ train            E: 357                   I: 358,000               T: 2 days, 1:39:09    
+ train            E: 357                   I: 358,000               R: 1172.6                S: 0.0                   T: 2 days, 1:39:09    
+ train            E: 358                   I: 359,000               T: 2 days, 1:46:58    
+ train            E: 358                   I: 359,000               R: 1119.7                S: 0.0                   T: 2 days, 1:46:58    
+ train            E: 359                   I: 360,000               T: 2 days, 1:54:45    
+ train            E: 359                   I: 360,000               R: 1089.7                S: 0.0                   T: 2 days, 1:54:45    
+ train            E: 360                   I: 361,000               T: 2 days, 2:02:28    
+ train            E: 360                   I: 361,000               R: 1089.1                S: 0.0                   T: 2 days, 2:02:28    
+ train            E: 361                   I: 362,000               T: 2 days, 2:10:19    
+ train            E: 361                   I: 362,000               R: 1006.6                S: 0.0                   T: 2 days, 2:10:19    
+ train            E: 362                   I: 363,000               T: 2 days, 2:18:15    
+ train            E: 362                   I: 363,000               R: 1116.9                S: 0.0                   T: 2 days, 2:18:15    
+ train            E: 363                   I: 364,000               T: 2 days, 2:26:08    
+ train            E: 363                   I: 364,000               R: 1091.7                S: 0.0                   T: 2 days, 2:26:08    
+ train            E: 364                   I: 365,000               T: 2 days, 2:33:59    
+ train            E: 364                   I: 365,000               R: 1165.8                S: 0.0                   T: 2 days, 2:33:59    
+ train            E: 365                   I: 366,000               T: 2 days, 2:41:49    
+ train            E: 365                   I: 366,000               R: 1065.0                S: 0.0                   T: 2 days, 2:41:49    
+ train            E: 366                   I: 367,000               T: 2 days, 2:49:41    
+ train            E: 366                   I: 367,000               R: 1094.0                S: 0.0                   T: 2 days, 2:49:41    
+ train            E: 367                   I: 368,000               T: 2 days, 2:57:31    
+ train            E: 367                   I: 368,000               R: 1147.0                S: 0.0                   T: 2 days, 2:57:31    
+ train            E: 368                   I: 369,000               T: 2 days, 3:05:21    
+ train            E: 368                   I: 369,000               R: 1140.6                S: 0.0                   T: 2 days, 3:05:21    
+ train            E: 369                   I: 370,000               T: 2 days, 3:13:11    
+ train            E: 369                   I: 370,000               R: 1131.2                S: 0.0                   T: 2 days, 3:13:11    
+ train            E: 370                   I: 371,000               T: 2 days, 3:21:00    
+ train            E: 370                   I: 371,000               R: 1033.8                S: 0.0                   T: 2 days, 3:21:00    
+ train            E: 371                   I: 372,000               T: 2 days, 3:28:53    
+ train            E: 371                   I: 372,000               R: 1141.4                S: 0.0                   T: 2 days, 3:28:53    
+ train            E: 372                   I: 373,000               T: 2 days, 3:36:44    
+ train            E: 372                   I: 373,000               R: 1137.8                S: 0.0                   T: 2 days, 3:36:44    
+ train            E: 373                   I: 374,000               T: 2 days, 3:44:36    
+ train            E: 373                   I: 374,000               R: 1148.2                S: 0.0                   T: 2 days, 3:44:36    
+ train            E: 374                   I: 375,000               T: 2 days, 3:52:31    
+ train            E: 374                   I: 375,000               R: 1125.5                S: 0.0                   T: 2 days, 3:52:31    
+ train            E: 375                   I: 376,000               T: 2 days, 4:00:24    
+ train            E: 375                   I: 376,000               R: 1119.4                S: 0.0                   T: 2 days, 4:00:24    
+ train            E: 376                   I: 377,000               T: 2 days, 4:08:20    
+ train            E: 376                   I: 377,000               R: 1057.5                S: 0.0                   T: 2 days, 4:08:20    
+ train            E: 377                   I: 378,000               T: 2 days, 4:16:10    
+ train            E: 377                   I: 378,000               R: 1038.1                S: 0.0                   T: 2 days, 4:16:10    
+ train            E: 378                   I: 379,000               T: 2 days, 4:24:00    
+ train            E: 378                   I: 379,000               R: 1053.0                S: 0.0                   T: 2 days, 4:24:00    
+ train            E: 379                   I: 380,000               T: 2 days, 4:31:52    
+ train            E: 379                   I: 380,000               R: 1039.7                S: 0.0                   T: 2 days, 4:31:52    
+ train            E: 380                   I: 381,000               T: 2 days, 4:39:43    
+ train            E: 380                   I: 381,000               R: 1073.3                S: 0.0                   T: 2 days, 4:39:43    
+ train            E: 381                   I: 382,000               T: 2 days, 4:47:32    
+ train            E: 381                   I: 382,000               R: 1106.0                S: 0.0                   T: 2 days, 4:47:32    
+ train            E: 382                   I: 383,000               T: 2 days, 4:55:21    
+ train            E: 382                   I: 383,000               R: 1165.1                S: 0.0                   T: 2 days, 4:55:21    
+ train            E: 383                   I: 384,000               T: 2 days, 5:03:11    
+ train            E: 383                   I: 384,000               R: 1078.0                S: 0.0                   T: 2 days, 5:03:11    
+ train            E: 384                   I: 385,000               T: 2 days, 5:11:01    
+ train            E: 384                   I: 385,000               R: 1096.9                S: 0.0                   T: 2 days, 5:11:01    
+ train            E: 385                   I: 386,000               T: 2 days, 5:18:48    
+ train            E: 385                   I: 386,000               R: 1061.8                S: 0.0                   T: 2 days, 5:18:48    
+ train            E: 386                   I: 387,000               T: 2 days, 5:26:04    
+ train            E: 386                   I: 387,000               R: 1189.0                S: 0.0                   T: 2 days, 5:26:04    
+ train            E: 387                   I: 388,000               T: 2 days, 5:33:21    
+ train            E: 387                   I: 388,000               R: 1034.0                S: 0.0                   T: 2 days, 5:33:21    
+ train            E: 388                   I: 389,000               T: 2 days, 5:40:34    
+ train            E: 388                   I: 389,000               R: 1082.2                S: 0.0                   T: 2 days, 5:40:34    
+ train            E: 389                   I: 390,000               T: 2 days, 5:47:49    
+ train            E: 389                   I: 390,000               R: 1097.5                S: 0.0                   T: 2 days, 5:47:49    
+ train            E: 390                   I: 391,000               T: 2 days, 5:55:03    
+ train            E: 390                   I: 391,000               R: 1132.2                S: 0.0                   T: 2 days, 5:55:03    
+ train            E: 391                   I: 392,000               T: 2 days, 6:02:17    
+ train            E: 391                   I: 392,000               R: 1008.7                S: 0.0                   T: 2 days, 6:02:17    
+ train            E: 392                   I: 393,000               T: 2 days, 6:09:31    
+ train            E: 392                   I: 393,000               R: 1151.6                S: 0.0                   T: 2 days, 6:09:31    
+ train            E: 393                   I: 394,000               T: 2 days, 6:16:56    
+ train            E: 393                   I: 394,000               R: 1064.7                S: 0.0                   T: 2 days, 6:16:56    
+ train            E: 394                   I: 395,000               T: 2 days, 6:24:10    
+ train            E: 394                   I: 395,000               R: 1097.1                S: 0.0                   T: 2 days, 6:24:10    
+ train            E: 395                   I: 396,000               T: 2 days, 6:31:23    
+ train            E: 395                   I: 396,000               R: 1144.1                S: 0.0                   T: 2 days, 6:31:23    
+ train            E: 396                   I: 397,000               T: 2 days, 6:38:15    
+ train            E: 396                   I: 397,000               R: 1149.1                S: 0.0                   T: 2 days, 6:38:15    
+ train            E: 397                   I: 398,000               T: 2 days, 6:44:34    
+ train            E: 397                   I: 398,000               R: 1040.2                S: 0.0                   T: 2 days, 6:44:34    
+ train            E: 398                   I: 399,000               T: 2 days, 6:51:03    
+ train            E: 398                   I: 399,000               R: 1124.5                S: 0.0                   T: 2 days, 6:51:03    
+ eval             E: 399                   I: 400,000               R: 1105.4                S: 0.0                   T: 2 days, 7:33:58    
+ train            E: 399                   I: 400,000               T: 2 days, 7:33:58    
+ train            E: 399                   I: 400,000               R: 1117.5                S: 0.0                   T: 2 days, 7:33:58    
+ train            E: 400                   I: 401,000               T: 2 days, 7:41:12    
+ train            E: 400                   I: 401,000               R: 1094.1                S: 0.0                   T: 2 days, 7:41:12    
+ train            E: 401                   I: 402,000               T: 2 days, 7:48:27    
+ train            E: 401                   I: 402,000               R: 1139.1                S: 0.0                   T: 2 days, 7:48:27    
+ train            E: 402                   I: 403,000               T: 2 days, 7:56:23    
+ train            E: 402                   I: 403,000               R: 1124.6                S: 0.0                   T: 2 days, 7:56:23    
+ train            E: 403                   I: 404,000               T: 2 days, 8:04:18    
+ train            E: 403                   I: 404,000               R: 1018.8                S: 0.0                   T: 2 days, 8:04:18    
+ train            E: 404                   I: 405,000               T: 2 days, 8:12:09    
+ train            E: 404                   I: 405,000               R: 1227.3                S: 0.0                   T: 2 days, 8:12:09    
+ train            E: 405                   I: 406,000               T: 2 days, 8:20:00    
+ train            E: 405                   I: 406,000               R: 1122.1                S: 0.0                   T: 2 days, 8:20:00    
+ train            E: 406                   I: 407,000               T: 2 days, 8:27:44    
+ train            E: 406                   I: 407,000               R: 1126.1                S: 0.0                   T: 2 days, 8:27:44    
+ train            E: 407                   I: 408,000               T: 2 days, 8:35:35    
+ train            E: 407                   I: 408,000               R: 1074.3                S: 0.0                   T: 2 days, 8:35:35    
+ train            E: 408                   I: 409,000               T: 2 days, 8:43:23    
+ train            E: 408                   I: 409,000               R: 1158.8                S: 0.0                   T: 2 days, 8:43:23    
+ train            E: 409                   I: 410,000               T: 2 days, 8:51:09    
+ train            E: 409                   I: 410,000               R: 1157.9                S: 0.0                   T: 2 days, 8:51:09    
+ train            E: 410                   I: 411,000               T: 2 days, 8:58:58    
+ train            E: 410                   I: 411,000               R: 1086.6                S: 0.0                   T: 2 days, 8:58:58    
+ train            E: 411                   I: 412,000               T: 2 days, 9:06:46    
+ train            E: 411                   I: 412,000               R: 1173.6                S: 0.0                   T: 2 days, 9:06:46    
+ train            E: 412                   I: 413,000               T: 2 days, 9:14:37    
+ train            E: 412                   I: 413,000               R: 1074.9                S: 0.0                   T: 2 days, 9:14:37    
+ train            E: 413                   I: 414,000               T: 2 days, 9:22:26    
+ train            E: 413                   I: 414,000               R: 1095.2                S: 0.0                   T: 2 days, 9:22:26    
+ train            E: 414                   I: 415,000               T: 2 days, 9:30:16    
+ train            E: 414                   I: 415,000               R: 1118.2                S: 0.0                   T: 2 days, 9:30:16    
+ train            E: 415                   I: 416,000               T: 2 days, 9:38:05    
+ train            E: 415                   I: 416,000               R: 1175.4                S: 0.0                   T: 2 days, 9:38:05    
+ train            E: 416                   I: 417,000               T: 2 days, 9:45:52    
+ train            E: 416                   I: 417,000               R: 1257.8                S: 0.0                   T: 2 days, 9:45:52    
+ train            E: 417                   I: 418,000               T: 2 days, 9:53:41    
+ train            E: 417                   I: 418,000               R: 1075.9                S: 0.0                   T: 2 days, 9:53:41    
+ train            E: 418                   I: 419,000               T: 2 days, 10:01:27   
+ train            E: 418                   I: 419,000               R: 1014.4                S: 0.0                   T: 2 days, 10:01:27   
+ train            E: 419                   I: 420,000               T: 2 days, 10:09:17   
+ train            E: 419                   I: 420,000               R: 1158.9                S: 0.0                   T: 2 days, 10:09:17   
+ train            E: 420                   I: 421,000               T: 2 days, 10:17:08   
+ train            E: 420                   I: 421,000               R: 1158.3                S: 0.0                   T: 2 days, 10:17:08   
+ train            E: 421                   I: 422,000               T: 2 days, 10:25:02   
+ train            E: 421                   I: 422,000               R: 1042.7                S: 0.0                   T: 2 days, 10:25:02   
+ train            E: 422                   I: 423,000               T: 2 days, 10:32:58   
+ train            E: 422                   I: 423,000               R: 1081.7                S: 0.0                   T: 2 days, 10:32:58   
+ train            E: 423                   I: 424,000               T: 2 days, 10:40:52   
+ train            E: 423                   I: 424,000               R: 892.2                 S: 0.0                   T: 2 days, 10:40:52   
+ train            E: 424                   I: 425,000               T: 2 days, 10:48:49   
+ train            E: 424                   I: 425,000               R: 1202.6                S: 0.0                   T: 2 days, 10:48:49   
+ train            E: 425                   I: 426,000               T: 2 days, 10:56:58   
+ train            E: 425                   I: 426,000               R: 1056.6                S: 0.0                   T: 2 days, 10:56:58   
+ train            E: 426                   I: 427,000               T: 2 days, 11:04:57   
+ train            E: 426                   I: 427,000               R: 1179.5                S: 0.0                   T: 2 days, 11:04:57   
+ train            E: 427                   I: 428,000               T: 2 days, 11:12:54   
+ train            E: 427                   I: 428,000               R: 1184.0                S: 0.0                   T: 2 days, 11:12:54   
+ train            E: 428                   I: 429,000               T: 2 days, 11:20:52   
+ train            E: 428                   I: 429,000               R: 1226.1                S: 0.0                   T: 2 days, 11:20:52   
+ train            E: 429                   I: 430,000               T: 2 days, 11:28:49   
+ train            E: 429                   I: 430,000               R: 1156.6                S: 0.0                   T: 2 days, 11:28:49   
+ train            E: 430                   I: 431,000               T: 2 days, 11:36:44   
+ train            E: 430                   I: 431,000               R: 1130.2                S: 0.0                   T: 2 days, 11:36:44   
+ train            E: 431                   I: 432,000               T: 2 days, 11:44:36   
+ train            E: 431                   I: 432,000               R: 1035.1                S: 0.0                   T: 2 days, 11:44:36   
+ train            E: 432                   I: 433,000               T: 2 days, 11:52:29   
+ train            E: 432                   I: 433,000               R: 1185.3                S: 0.0                   T: 2 days, 11:52:29   
+ train            E: 433                   I: 434,000               T: 2 days, 12:00:23   
+ train            E: 433                   I: 434,000               R: 1098.2                S: 0.0                   T: 2 days, 12:00:23   
+ train            E: 434                   I: 435,000               T: 2 days, 12:08:17   
+ train            E: 434                   I: 435,000               R: 1022.6                S: 0.0                   T: 2 days, 12:08:17   
+ train            E: 435                   I: 436,000               T: 2 days, 12:16:13   
+ train            E: 435                   I: 436,000               R: 1153.6                S: 0.0                   T: 2 days, 12:16:13   
+ train            E: 436                   I: 437,000               T: 2 days, 12:24:07   
+ train            E: 436                   I: 437,000               R: 1121.8                S: 0.0                   T: 2 days, 12:24:07   
+ train            E: 437                   I: 438,000               T: 2 days, 12:32:00   
+ train            E: 437                   I: 438,000               R: 1115.4                S: 0.0                   T: 2 days, 12:32:00   
+ train            E: 438                   I: 439,000               T: 2 days, 12:39:56   
+ train            E: 438                   I: 439,000               R: 1148.1                S: 0.0                   T: 2 days, 12:39:56   
+ train            E: 439                   I: 440,000               T: 2 days, 12:47:53   
+ train            E: 439                   I: 440,000               R: 1184.4                S: 0.0                   T: 2 days, 12:47:53   
+ train            E: 440                   I: 441,000               T: 2 days, 12:55:46   
+ train            E: 440                   I: 441,000               R: 1084.9                S: 0.0                   T: 2 days, 12:55:46   
+ train            E: 441                   I: 442,000               T: 2 days, 13:03:41   
+ train            E: 441                   I: 442,000               R: 1268.8                S: 0.0                   T: 2 days, 13:03:41   
+ train            E: 442                   I: 443,000               T: 2 days, 13:11:36   
+ train            E: 442                   I: 443,000               R: 1142.1                S: 0.0                   T: 2 days, 13:11:36   
+ train            E: 443                   I: 444,000               T: 2 days, 13:19:32   
+ train            E: 443                   I: 444,000               R: 1180.6                S: 0.0                   T: 2 days, 13:19:32   
+ train            E: 444                   I: 445,000               T: 2 days, 13:27:27   
+ train            E: 444                   I: 445,000               R: 1031.2                S: 0.0                   T: 2 days, 13:27:27   
+ train            E: 445                   I: 446,000               T: 2 days, 13:35:23   
+ train            E: 445                   I: 446,000               R: 1114.9                S: 0.0                   T: 2 days, 13:35:23   
+ train            E: 446                   I: 447,000               T: 2 days, 13:43:15   
+ train            E: 446                   I: 447,000               R: 1085.6                S: 0.0                   T: 2 days, 13:43:15   
+ train            E: 447                   I: 448,000               T: 2 days, 13:51:22   
+ train            E: 447                   I: 448,000               R: 1143.0                S: 0.0                   T: 2 days, 13:51:22   
+ train            E: 448                   I: 449,000               T: 2 days, 13:59:22   
+ train            E: 448                   I: 449,000               R: 1101.1                S: 0.0                   T: 2 days, 13:59:22   
+ eval             E: 449                   I: 450,000               R: 1123.4                S: 0.0                   T: 2 days, 14:48:20   
+ train            E: 449                   I: 450,000               T: 2 days, 14:48:20   
+ train            E: 449                   I: 450,000               R: 1144.3                S: 0.0                   T: 2 days, 14:48:20   
+ train            E: 450                   I: 451,000               T: 2 days, 14:56:16   
+ train            E: 450                   I: 451,000               R: 1087.8                S: 0.0                   T: 2 days, 14:56:16   
+ train            E: 451                   I: 452,000               T: 2 days, 15:04:13   
+ train            E: 451                   I: 452,000               R: 1096.7                S: 0.0                   T: 2 days, 15:04:13   
+ train            E: 452                   I: 453,000               T: 2 days, 15:11:04   
+ train            E: 452                   I: 453,000               R: 1181.7                S: 0.0                   T: 2 days, 15:11:04   
+ train            E: 453                   I: 454,000               T: 2 days, 15:18:24   
+ train            E: 453                   I: 454,000               R: 1206.6                S: 0.0                   T: 2 days, 15:18:24   
+ train            E: 454                   I: 455,000               T: 2 days, 15:25:31   
+ train            E: 454                   I: 455,000               R: 1007.8                S: 0.0                   T: 2 days, 15:25:31   
+ train            E: 455                   I: 456,000               T: 2 days, 15:32:46   
+ train            E: 455                   I: 456,000               R: 1256.1                S: 0.0                   T: 2 days, 15:32:46   
+ train            E: 456                   I: 457,000               T: 2 days, 15:40:42   
+ train            E: 456                   I: 457,000               R: 1248.9                S: 0.0                   T: 2 days, 15:40:42   
+ train            E: 457                   I: 458,000               T: 2 days, 15:48:39   
+ train            E: 457                   I: 458,000               R: 1114.3                S: 0.0                   T: 2 days, 15:48:39   
+ train            E: 458                   I: 459,000               T: 2 days, 15:56:31   
+ train            E: 458                   I: 459,000               R: 1136.3                S: 0.0                   T: 2 days, 15:56:31   
+ train            E: 459                   I: 460,000               T: 2 days, 16:04:29   
+ train            E: 459                   I: 460,000               R: 1254.6                S: 0.0                   T: 2 days, 16:04:29   
+ train            E: 460                   I: 461,000               T: 2 days, 16:12:24   
+ train            E: 460                   I: 461,000               R: 1172.9                S: 0.0                   T: 2 days, 16:12:24   
+ train            E: 461                   I: 462,000               T: 2 days, 16:20:20   
+ train            E: 461                   I: 462,000               R: 1058.8                S: 0.0                   T: 2 days, 16:20:20   
+ train            E: 462                   I: 463,000               T: 2 days, 16:28:18   
+ train            E: 462                   I: 463,000               R: 1094.4                S: 0.0                   T: 2 days, 16:28:18   
+ train            E: 463                   I: 464,000               T: 2 days, 16:36:15   
+ train            E: 463                   I: 464,000               R: 1080.6                S: 0.0                   T: 2 days, 16:36:15   
+ train            E: 464                   I: 465,000               T: 2 days, 16:44:09   
+ train            E: 464                   I: 465,000               R: 1115.8                S: 0.0                   T: 2 days, 16:44:09   
+ train            E: 465                   I: 466,000               T: 2 days, 16:52:16   
+ train            E: 465                   I: 466,000               R: 1037.0                S: 0.0                   T: 2 days, 16:52:16   
+ train            E: 466                   I: 467,000               T: 2 days, 17:00:13   
+ train            E: 466                   I: 467,000               R: 1156.0                S: 0.0                   T: 2 days, 17:00:13   
+ train            E: 467                   I: 468,000               T: 2 days, 17:08:10   
+ train            E: 467                   I: 468,000               R: 1111.6                S: 0.0                   T: 2 days, 17:08:10   
+ train            E: 468                   I: 469,000               T: 2 days, 17:16:08   
+ train            E: 468                   I: 469,000               R: 1224.2                S: 0.0                   T: 2 days, 17:16:08   
+ train            E: 469                   I: 470,000               T: 2 days, 17:24:04   
+ train            E: 469                   I: 470,000               R: 1108.7                S: 0.0                   T: 2 days, 17:24:04   
+ train            E: 470                   I: 471,000               T: 2 days, 17:32:04   
+ train            E: 470                   I: 471,000               R: 1163.1                S: 0.0                   T: 2 days, 17:32:04   
+ train            E: 471                   I: 472,000               T: 2 days, 17:40:01   
+ train            E: 471                   I: 472,000               R: 1213.9                S: 0.0                   T: 2 days, 17:40:01   
+ train            E: 472                   I: 473,000               T: 2 days, 17:47:59   
+ train            E: 472                   I: 473,000               R: 1048.8                S: 0.0                   T: 2 days, 17:47:59   
+ train            E: 473                   I: 474,000               T: 2 days, 17:55:57   
+ train            E: 473                   I: 474,000               R: 1092.6                S: 0.0                   T: 2 days, 17:55:57   
+ train            E: 474                   I: 475,000               T: 2 days, 18:03:54   
+ train            E: 474                   I: 475,000               R: 1248.5                S: 0.0                   T: 2 days, 18:03:54   
+ train            E: 475                   I: 476,000               T: 2 days, 18:11:53   
+ train            E: 475                   I: 476,000               R: 1104.4                S: 0.0                   T: 2 days, 18:11:53   
+ train            E: 476                   I: 477,000               T: 2 days, 18:19:51   
+ train            E: 476                   I: 477,000               R: 1058.5                S: 0.0                   T: 2 days, 18:19:51   
+ train            E: 477                   I: 478,000               T: 2 days, 18:27:49   
+ train            E: 477                   I: 478,000               R: 1161.9                S: 0.0                   T: 2 days, 18:27:49   
+ train            E: 478                   I: 479,000               T: 2 days, 18:35:46   
+ train            E: 478                   I: 479,000               R: 1264.9                S: 0.0                   T: 2 days, 18:35:46   
+ train            E: 479                   I: 480,000               T: 2 days, 18:43:44   
+ train            E: 479                   I: 480,000               R: 1017.4                S: 0.0                   T: 2 days, 18:43:44   
+ train            E: 480                   I: 481,000               T: 2 days, 18:51:42   
+ train            E: 480                   I: 481,000               R: 1248.6                S: 0.0                   T: 2 days, 18:51:42   
+ train            E: 481                   I: 482,000               T: 2 days, 18:59:40   
+ train            E: 481                   I: 482,000               R: 1204.2                S: 0.0                   T: 2 days, 18:59:40   
+ train            E: 482                   I: 483,000               T: 2 days, 19:07:39   
+ train            E: 482                   I: 483,000               R: 1103.5                S: 0.0                   T: 2 days, 19:07:39   
+ train            E: 483                   I: 484,000               T: 2 days, 19:15:35   
+ train            E: 483                   I: 484,000               R: 1261.3                S: 0.0                   T: 2 days, 19:15:35   
+ train            E: 484                   I: 485,000               T: 2 days, 19:23:33   
+ train            E: 484                   I: 485,000               R: 1131.9                S: 0.0                   T: 2 days, 19:23:33   
+ train            E: 485                   I: 486,000               T: 2 days, 19:31:30   
+ train            E: 485                   I: 486,000               R: 989.8                 S: 0.0                   T: 2 days, 19:31:30   
+ train            E: 486                   I: 487,000               T: 2 days, 19:39:26   
+ train            E: 486                   I: 487,000               R: 1156.6                S: 0.0                   T: 2 days, 19:39:26   
+ train            E: 487                   I: 488,000               T: 2 days, 19:47:29   
+ train            E: 487                   I: 488,000               R: 1171.3                S: 0.0                   T: 2 days, 19:47:29   
+ train            E: 488                   I: 489,000               T: 2 days, 19:55:35   
+ train            E: 488                   I: 489,000               R: 1211.0                S: 0.0                   T: 2 days, 19:55:35   
+ train            E: 489                   I: 490,000               T: 2 days, 20:03:33   
+ train            E: 489                   I: 490,000               R: 1142.7                S: 0.0                   T: 2 days, 20:03:33   
+ train            E: 490                   I: 491,000               T: 2 days, 20:11:31   
+ train            E: 490                   I: 491,000               R: 1129.9                S: 0.0                   T: 2 days, 20:11:31   
+ train            E: 491                   I: 492,000               T: 2 days, 20:19:29   
+ train            E: 491                   I: 492,000               R: 1282.1                S: 0.0                   T: 2 days, 20:19:29   
+ train            E: 492                   I: 493,000               T: 2 days, 20:27:30   
+ train            E: 492                   I: 493,000               R: 1136.9                S: 0.0                   T: 2 days, 20:27:30   
+ train            E: 493                   I: 494,000               T: 2 days, 20:35:28   
+ train            E: 493                   I: 494,000               R: 989.5                 S: 0.0                   T: 2 days, 20:35:28   
+ train            E: 494                   I: 495,000               T: 2 days, 20:43:24   
+ train            E: 494                   I: 495,000               R: 1089.9                S: 0.0                   T: 2 days, 20:43:24   
+ train            E: 495                   I: 496,000               T: 2 days, 20:51:20   
+ train            E: 495                   I: 496,000               R: 1302.0                S: 0.0                   T: 2 days, 20:51:20   
+ train            E: 496                   I: 497,000               T: 2 days, 20:59:14   
+ train            E: 496                   I: 497,000               R: 1043.3                S: 0.0                   T: 2 days, 20:59:14   
+ train            E: 497                   I: 498,000               T: 2 days, 21:07:06   wandb: Network error (SSLError), entering retry loop.
+
+ train            E: 497                   I: 498,000               R: 1276.1                S: 0.0                   T: 2 days, 21:07:06   
+ train            E: 498                   I: 499,000               T: 2 days, 21:14:57   
+ train            E: 498                   I: 499,000               R: 1118.9                S: 0.0                   T: 2 days, 21:14:57   
+ eval             E: 499                   I: 500,000               R: 1175.1                S: 0.0                   T: 2 days, 22:03:10   
+ train            E: 499                   I: 500,000               T: 2 days, 22:03:10   
+ train            E: 499                   I: 500,000               R: 990.1                 S: 0.0                   T: 2 days, 22:03:10   
+ train            E: 500                   I: 501,000               T: 2 days, 22:10:59   
+ train            E: 500                   I: 501,000               R: 1198.9                S: 0.0                   T: 2 days, 22:10:59   
+ train            E: 501                   I: 502,000               T: 2 days, 22:18:50   
+ train            E: 501                   I: 502,000               R: 1193.1                S: 0.0                   T: 2 days, 22:18:50   
+ train            E: 502                   I: 503,000               T: 2 days, 22:26:44   
+ train            E: 502                   I: 503,000               R: 1178.9                S: 0.0                   T: 2 days, 22:26:44   
+ train            E: 503                   I: 504,000               T: 2 days, 22:34:40   
+ train            E: 503                   I: 504,000               R: 1118.5                S: 0.0                   T: 2 days, 22:34:41   
+ train            E: 504                   I: 505,000               T: 2 days, 22:42:37   
+ train            E: 504                   I: 505,000               R: 1209.0                S: 0.0                   T: 2 days, 22:42:37   
+ train            E: 505                   I: 506,000               T: 2 days, 22:50:45   
+ train            E: 505                   I: 506,000               R: 1078.8                S: 0.0                   T: 2 days, 22:50:45   
+ train            E: 506                   I: 507,000               T: 2 days, 22:58:42   
+ train            E: 506                   I: 507,000               R: 1136.8                S: 0.0                   T: 2 days, 22:58:42   
+ train            E: 507                   I: 508,000               T: 2 days, 23:06:37   
+ train            E: 507                   I: 508,000               R: 1280.8                S: 0.0                   T: 2 days, 23:06:37   
+ train            E: 508                   I: 509,000               T: 2 days, 23:14:32   
+ train            E: 508                   I: 509,000               R: 1173.7                S: 0.0                   T: 2 days, 23:14:32   
+ train            E: 509                   I: 510,000               T: 2 days, 23:22:27   
+ train            E: 509                   I: 510,000               R: 1160.8                S: 0.0                   T: 2 days, 23:22:27   
+ train            E: 510                   I: 511,000               T: 2 days, 23:30:23   
+ train            E: 510                   I: 511,000               R: 1177.3                S: 0.0                   T: 2 days, 23:30:23   
+ train            E: 511                   I: 512,000               T: 2 days, 23:38:18   
+ train            E: 511                   I: 512,000               R: 1075.5                S: 0.0                   T: 2 days, 23:38:19   
+ train            E: 512                   I: 513,000               T: 2 days, 23:45:39   
+ train            E: 512                   I: 513,000               R: 1171.1                S: 0.0                   T: 2 days, 23:45:39   
+ train            E: 513                   I: 514,000               T: 2 days, 23:52:38   
+ train            E: 513                   I: 514,000               R: 1126.8                S: 0.0                   T: 2 days, 23:52:38   
+ train            E: 514                   I: 515,000               T: 2 days, 23:59:41   
+ train            E: 514                   I: 515,000               R: 1285.9                S: 0.0                   T: 2 days, 23:59:41   
+ train            E: 515                   I: 516,000               T: 3 days, 0:06:41    
+ train            E: 515                   I: 516,000               R: 1281.1                S: 0.0                   T: 3 days, 0:06:41    
+ train            E: 516                   I: 517,000               T: 3 days, 0:14:15    
+ train            E: 516                   I: 517,000               R: 1030.0                S: 0.0                   T: 3 days, 0:14:15    
+ train            E: 517                   I: 518,000               T: 3 days, 0:22:06    
+ train            E: 517                   I: 518,000               R: 1156.8                S: 0.0                   T: 3 days, 0:22:06    
+ train            E: 518                   I: 519,000               T: 3 days, 0:29:56    
+ train            E: 518                   I: 519,000               R: 1155.1                S: 0.0                   T: 3 days, 0:29:56    
+ train            E: 519                   I: 520,000               T: 3 days, 0:37:47    
+ train            E: 519                   I: 520,000               R: 1174.0                S: 0.0                   T: 3 days, 0:37:47    
+ train            E: 520                   I: 521,000               T: 3 days, 0:45:38    
+ train            E: 520                   I: 521,000               R: 1162.3                S: 0.0                   T: 3 days, 0:45:38    
+ train            E: 521                   I: 522,000               T: 3 days, 0:53:31    
+ train            E: 521                   I: 522,000               R: 1166.0                S: 0.0                   T: 3 days, 0:53:31    
+ train            E: 522                   I: 523,000               T: 3 days, 1:01:22    
+ train            E: 522                   I: 523,000               R: 1175.9                S: 0.0                   T: 3 days, 1:01:22    
+ train            E: 523                   I: 524,000               T: 3 days, 1:09:14    
+ train            E: 523                   I: 524,000               R: 1259.8                S: 0.0                   T: 3 days, 1:09:14    
+ train            E: 524                   I: 525,000               T: 3 days, 1:17:04    
+ train            E: 524                   I: 525,000               R: 1016.2                S: 0.0                   T: 3 days, 1:17:04    
+ train            E: 525                   I: 526,000               T: 3 days, 1:24:56    
+ train            E: 525                   I: 526,000               R: 1250.5                S: 0.0                   T: 3 days, 1:24:56    
+ train            E: 526                   I: 527,000               T: 3 days, 1:32:46    
+ train            E: 526                   I: 527,000               R: 1070.1                S: 0.0                   T: 3 days, 1:32:46    
+ train            E: 527                   I: 528,000               T: 3 days, 1:40:38    
+ train            E: 527                   I: 528,000               R: 925.4                 S: 0.0                   T: 3 days, 1:40:38    
+ train            E: 528                   I: 529,000               T: 3 days, 1:48:35    
+ train            E: 528                   I: 529,000               R: 1216.0                S: 0.0                   T: 3 days, 1:48:35    
+ train            E: 529                   I: 530,000               T: 3 days, 1:56:26    
+ train            E: 529                   I: 530,000               R: 1207.1                S: 0.0                   T: 3 days, 1:56:26    
+ train            E: 530                   I: 531,000               T: 3 days, 2:04:17    
+ train            E: 530                   I: 531,000               R: 1157.3                S: 0.0                   T: 3 days, 2:04:17    
+ train            E: 531                   I: 532,000               T: 3 days, 2:12:08    
+ train            E: 531                   I: 532,000               R: 1178.2                S: 0.0                   T: 3 days, 2:12:08    
+ train            E: 532                   I: 533,000               T: 3 days, 2:20:18    wandb: Currently logged in as: levi1024 (OA-MBRL). Use `wandb login --relogin` to force relogin
+wandb: - Waiting for wandb.init()...wandb: \ Waiting for wandb.init()...wandb: | Waiting for wandb.init()...wandb: wandb version 0.20.1 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.17.3
+wandb: Run data is saved locally in /home/bit/Desktop/humanoid-bench/tdmpc2/logs/humanoid_h1hand-truck-v0/0/default/wandb/run-20250630_154042-8jgvgoxo
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run humanoid_h1hand-truck-v0.tdmpc.default.0
+wandb: ⭐️ View project at https://wandb.ai/OA-MBRL/moore-tdmpc
+wandb: 🚀 View run at https://wandb.ai/OA-MBRL/moore-tdmpc/runs/8jgvgoxo
+Work dir: /home/bit/Desktop/humanoid-bench/tdmpc2/logs/humanoid_h1hand-truck-v0/0/default
+Using DirectorTrainer for hierarchical control
+small obs start: None
+Episode length: 1000
+Discount factor: 0.995
+-------------------------------------------------
+  Task:           Humanoid_H1Hand Truck V0
+  Steps:          3,000,000
+  Observations:   [216]
+  Actions:        61
+  Experiment:     default
+-------------------------------------------------
+Logs will be synced with wandb.
+Architecture: WorldModel(
+  (_encoder): ModuleDict(
+    (state): Sequential(
+      (0): NormedLinear(in_features=216, out_features=256, bias=True, act=Mish)
+      (1): NormedLinear(in_features=256, out_features=512, bias=True, act=SimNorm)
+    )
+  )
+  (_dynamics): MoEBlock(
+    (gate): Linear(in_features=574, out_features=8, bias=False)
+    (unit_model): Sequential(
+      (0): NormedLinear(in_features=573, out_features=512, bias=True, act=Mish)
+      (1): NormedLinear(in_features=512, out_features=512, bias=True, act=Mish)
+    )
+    (trunk): Sequential(
+      (0): InputLayer()
+      (1): ParallelLayer(
+        (model_layers): ModuleList(
+          (0-7): 8 x Sequential(
+            (0): NormedLinear(in_features=573, out_features=512, bias=True, act=Mish)
+            (1): NormedLinear(in_features=512, out_features=512, bias=True, act=Mish)
+          )
+        )
+      )
+      (2): OrthogonalLayer1D()
+    )
+    (head): NormedLinear(in_features=512, out_features=512, bias=True, act=SimNorm)
+  )
+  (_reward): MoEBlock(
+    (gate): Linear(in_features=574, out_features=8, bias=False)
+    (unit_model): Sequential(
+      (0): NormedLinear(in_features=573, out_features=512, bias=True, act=Mish)
+      (1): NormedLinear(in_features=512, out_features=512, bias=True, act=Mish)
+    )
+    (trunk): Sequential(
+      (0): InputLayer()
+      (1): ParallelLayer(
+        (model_layers): ModuleList(
+          (0-7): 8 x Sequential(
+            (0): NormedLinear(in_features=573, out_features=512, bias=True, act=Mish)
+            (1): NormedLinear(in_features=512, out_features=512, bias=True, act=Mish)
+          )
+        )
+      )
+      (2): OrthogonalLayer1D()
+    )
+    (head): NormedLinear(in_features=512, out_features=101, bias=True, act=Mish)
+  )
+  (_pi): Sequential(
+    (0): NormedLinear(in_features=512, out_features=512, bias=True, act=Mish)
+    (1): NormedLinear(in_features=512, out_features=512, bias=True, act=Mish)
+    (2): Linear(in_features=512, out_features=122, bias=True)
+  )
+  (_Qs): Vectorized 5x Sequential(
+    (0): NormedLinear(in_features=573, out_features=512, bias=True, dropout=0.01, act=Mish)
+    (1): NormedLinear(in_features=512, out_features=512, bias=True, act=Mish)
+    (2): Linear(in_features=512, out_features=101, bias=True)
+  )
+  (_target_Qs): Vectorized 5x Sequential(
+    (0): NormedLinear(in_features=573, out_features=512, bias=True, dropout=0.01, act=Mish)
+    (1): NormedLinear(in_features=512, out_features=512, bias=True, act=Mish)
+    (2): Linear(in_features=512, out_features=101, bias=True)
+  )
+)
+Learnable parameters: 14,210,178
+Director setup complete:
+  Goal-VAE: 512 -> 64 (discrete)
+  Manager: 512 -> 64
+  Goal interval: 10
+ eval             E: 0                     I: 0                     R: 534.7                 S: 0.0                   T: 0:47:48            
+ train            E: 0                     I: 1,000                 T: 0:47:54            
+ train            E: 0                     I: 1,000                 R: 580.2                 S: 0.0                   T: 0:47:54            
+Buffer capacity: 1,000,000
+Storage required: 3.42 GB
+Using CUDA memory for storage.
+ train            E: 1                     I: 2,000                 T: 0:48:02            
+ train            E: 1                     I: 2,000                 R: 538.1                 S: 0.0                   T: 0:48:02            
+ train            E: 2                     I: 3,000                 T: 0:48:08            
+ train            E: 2                     I: 3,000                 R: 512.9                 S: 0.0                   T: 0:48:08            
+ train            E: 3                     I: 4,000                 T: 0:48:15            
+ train            E: 3                     I: 4,000                 R: 625.0                 S: 0.0                   T: 0:48:15            
+ train            E: 4                     I: 5,000                 T: 0:48:21            
+ train            E: 4                     I: 5,000                 R: 520.9                 S: 0.0                   T: 0:48:21            
+Pretraining agent on seed data...
+
+ train            E: 532                   I: 533,000               R: 1202.2                S: 0.0                   T: 3 days, 2:20:18    
+ train            E: 533                   I: 534,000               T: 3 days, 2:28:04    
+ train            E: 533                   I: 534,000               R: 1179.6                S: 0.0                   T: 3 days, 2:28:04    
+ train            E: 534                   I: 535,000               T: 3 days, 2:35:55    
+ train            E: 534                   I: 535,000               R: 1115.2                S: 0.0                   T: 3 days, 2:35:55    
+ train            E: 535                   I: 536,000               T: 3 days, 2:43:46    
+ train            E: 535                   I: 536,000               R: 1082.6                S: 0.0                   T: 3 days, 2:43:46    
+ train            E: 536                   I: 537,000               T: 3 days, 2:51:38    
+ train            E: 536                   I: 537,000               R: 1231.5                S: 0.0                   T: 3 days, 2:51:38    
+ train            E: 537                   I: 538,000               T: 3 days, 2:59:25    
+ train            E: 537                   I: 538,000               R: 1266.4                S: 0.0                   T: 3 days, 2:59:25    
+ train            E: 538                   I: 539,000               T: 3 days, 3:07:16    
+ train            E: 538                   I: 539,000               R: 1122.7                S: 0.0                   T: 3 days, 3:07:16    
+ train            E: 539                   I: 540,000               T: 3 days, 3:15:10    
+ train            E: 539                   I: 540,000               R: 1207.4                S: 0.0                   T: 3 days, 3:15:10    
+ train            E: 540                   I: 541,000               T: 3 days, 3:23:03    
+ train            E: 540                   I: 541,000               R: 1154.2                S: 0.0                   T: 3 days, 3:23:03    
+ train            E: 541                   I: 542,000               T: 3 days, 3:30:54    
+ train            E: 541                   I: 542,000               R: 1183.3                S: 0.0                   T: 3 days, 3:30:54    
+ train            E: 542                   I: 543,000               T: 3 days, 3:38:45    
+ train            E: 542                   I: 543,000               R: 1204.6                S: 0.0                   T: 3 days, 3:38:45    
+ train            E: 543                   I: 544,000               T: 3 days, 3:46:36    
+ train            E: 543                   I: 544,000               R: 1166.5                S: 0.0                   T: 3 days, 3:46:36    
+ train            E: 544                   I: 545,000               T: 3 days, 3:54:29    
+ train            E: 544                   I: 545,000               R: 1273.3                S: 0.0                   T: 3 days, 3:54:29    
+ train            E: 545                   I: 546,000               T: 3 days, 4:02:16    
+ train            E: 545                   I: 546,000               R: 1189.8                S: 0.0                   T: 3 days, 4:02:16    
+ train            E: 546                   I: 547,000               T: 3 days, 4:10:04    
+ train            E: 546                   I: 547,000               R: 1182.8                S: 0.0                   T: 3 days, 4:10:04    
+ train            E: 547                   I: 548,000               T: 3 days, 4:17:54    
+ train            E: 547                   I: 548,000               R: 1169.6                S: 0.0                   T: 3 days, 4:17:54    
+ train            E: 548                   I: 549,000               T: 3 days, 4:25:44    
+ train            E: 548                   I: 549,000               R: 1173.3                S: 0.0                   T: 3 days, 4:25:44    
+ eval             E: 549                   I: 550,000               R: 1189.8                S: 0.0                   T: 3 days, 5:13:52    
+ train            E: 549                   I: 550,000               T: 3 days, 5:13:52    
+ train            E: 549                   I: 550,000               R: 1236.2                S: 0.0                   T: 3 days, 5:13:52    
+ train            E: 550                   I: 551,000               T: 3 days, 5:21:40    
+ train            E: 550                   I: 551,000               R: 1180.1                S: 0.0                   T: 3 days, 5:21:40    
+ train            E: 551                   I: 552,000               T: 3 days, 5:29:29    
+ train            E: 551                   I: 552,000               R: 1298.0                S: 0.0                   T: 3 days, 5:29:29    
+ train            E: 552                   I: 553,000               T: 3 days, 5:37:18    
+ train            E: 552                   I: 553,000               R: 1243.6                S: 0.0                   T: 3 days, 5:37:18    
+ train            E: 553                   I: 554,000               T: 3 days, 5:45:04    
+ train            E: 553                   I: 554,000               R: 1223.8                S: 0.0                   T: 3 days, 5:45:04    
+ train            E: 554                   I: 555,000               T: 3 days, 5:52:55    
+ train            E: 554                   I: 555,000               R: 1224.9                S: 0.0                   T: 3 days, 5:52:55    
+ train            E: 555                   I: 556,000               T: 3 days, 6:00:43    
+ train            E: 555                   I: 556,000               R: 1219.1                S: 0.0                   T: 3 days, 6:00:43    
+ train            E: 556                   I: 557,000               T: 3 days, 6:08:32    
+ train            E: 556                   I: 557,000               R: 1261.9                S: 0.0                   T: 3 days, 6:08:32    
+ train            E: 557                   I: 558,000               T: 3 days, 6:16:20    
+ train            E: 557                   I: 558,000               R: 1273.4                S: 0.0                   T: 3 days, 6:16:20    
+ train            E: 558                   I: 559,000               T: 3 days, 6:23:43    
+ train            E: 558                   I: 559,000               R: 1184.9                S: 0.0                   T: 3 days, 6:23:43    
+ train            E: 559                   I: 560,000               T: 3 days, 6:30:55    
+ train            E: 559                   I: 560,000               R: 1293.8                S: 0.0                   T: 3 days, 6:30:55    
+ train            E: 560                   I: 561,000               T: 3 days, 6:38:08    
+ train            E: 560                   I: 561,000               R: 1266.3                S: 0.0                   T: 3 days, 6:38:08    
+ train            E: 561                   I: 562,000               T: 3 days, 6:45:21    
+ train            E: 561                   I: 562,000               R: 1191.2                S: 0.0                   T: 3 days, 6:45:21    
+ train            E: 562                   I: 563,000               T: 3 days, 6:52:35    
+ train            E: 562                   I: 563,000               R: 1250.4                S: 0.0                   T: 3 days, 6:52:35    
+ train            E: 563                   I: 564,000               T: 3 days, 6:59:49    
+ train            E: 563                   I: 564,000               R: 1274.0                S: 0.0                   T: 3 days, 6:59:49    
+ train            E: 564                   I: 565,000               T: 3 days, 7:07:06    
+ train            E: 564                   I: 565,000               R: 1174.4                S: 0.0                   T: 3 days, 7:07:06    
+ train            E: 565                   I: 566,000               T: 3 days, 7:14:23    
+ train            E: 565                   I: 566,000               R: 1295.1                S: 0.0                   T: 3 days, 7:14:23    
+ train            E: 566                   I: 567,000               T: 3 days, 7:21:39    
+ train            E: 566                   I: 567,000               R: 1214.2                S: 0.0                   T: 3 days, 7:21:39    
+ train            E: 567                   I: 568,000               T: 3 days, 7:28:59    
